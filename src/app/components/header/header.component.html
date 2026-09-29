@@ -1,0 +1,160 @@
+<!-- ===================== ANNOUNCEMENT BAR ===================== -->
+<div class="announcement-bar">
+  <div class="announcement-text" [class.fading]="announcementFading">
+    {{ announcements[currentAnnouncement] }}
+  </div>
+</div>
+
+<!-- ===================== MAIN HEADER ===================== -->
+<header class="theme-header">
+  <div class="header-inner container-fluid px-4">
+
+    <!-- Mobile Hamburger -->
+    <div class="d-lg-none d-flex align-items-center" style="flex: 1;">
+      <button class="icon-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Nav Links Left -->
+    <nav class="header-left d-none d-lg-flex" aria-label="Primary navigation">
+      <!-- Collections with Mega Menu -->
+      <div class="mega-menu-wrapper"
+           (mouseenter)="openMegaMenu()"
+           (mouseleave)="closeMegaMenuDelayed()">
+        <a routerLink="/collection" class="nav-link has-mega" id="nav-collections">
+          Collections
+          <svg class="chevron" viewBox="0 0 12 8" width="10" height="10" fill="none">
+            <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+
+        <!-- Mega Menu Panel -->
+        <div class="mega-menu-panel" [class.open]="megaMenuOpen"
+             (mouseenter)="cancelCloseMegaMenu()"
+             (mouseleave)="closeMegaMenuDelayed()"
+             role="menu" aria-label="Collections mega menu">
+          <div class="mega-menu-inner">
+            <!-- Sub-links column -->
+            <div class="mega-links-col">
+              <p class="mega-col-label">SHOP BY SCENT</p>
+              <ul class="mega-links-list" role="list">
+
+                <li><a [routerLink]="['/collection']" [queryParams]="{filter: 'Floral'}" class="mega-link" role="menuitem">Floral</a></li>
+                <li><a [routerLink]="['/collection']" [queryParams]="{filter: 'Woody'}" class="mega-link" role="menuitem">Woody</a></li>
+                <li><a [routerLink]="['/collection']" [queryParams]="{filter: 'Fresh'}" class="mega-link" role="menuitem">Fresh & Citrus</a></li>
+                <li><a [routerLink]="['/collection']" [queryParams]="{filter: 'Our Signature'}" class="mega-link" role="menuitem">Our Signature</a></li>
+                <li><a routerLink="/collection" class="mega-link mega-link--all" role="menuitem">View All →</a></li>
+              </ul>
+            </div>
+
+            <!-- Promo image tiles -->
+            <div class="mega-promo-col">
+              <a [routerLink]="['/collection']" [queryParams]="{filter: 'Best Sellers'}" class="mega-promo-card" role="menuitem" aria-label="Best Sellers">
+                <div class="mega-promo-img" style="background-image: url('assets/ChatGPT Image Jul 26, 2026, 06_23_59 PM.png')"></div>
+                <span class="mega-promo-label">Best Sellers</span>
+              </a>
+              <a [routerLink]="['/collection']" [queryParams]="{filter: 'New Launch'}" class="mega-promo-card" role="menuitem" aria-label="New Launch">
+                <div class="mega-promo-img" style="background-image: url('assets/ChatGPT Image Jul 26, 2026, 06_24_08 PM.png')"></div>
+                <span class="mega-promo-label">New Launch</span>
+              </a>
+              <a [routerLink]="['/collection']" [queryParams]="{filter: 'Gift Sets'}" class="mega-promo-card" role="menuitem" aria-label="Gift Sets">
+                <div class="mega-promo-img" style="background-image: url('assets/ChatGPT Image Jul 26, 2026, 06_24_24 PM.png')"></div>
+                <span class="mega-promo-label">Gift Sets</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a routerLink="/story" class="nav-link">About Us</a>
+      <a routerLink="/contact" class="nav-link">Contact Us</a>
+    </nav>
+
+    <!-- Center Logo -->
+    <div class="header-center mx-auto text-center">
+      <a routerLink="/" class="header-logo d-flex flex-column align-items-center text-decoration-none">
+        <img src="assets/rlaimg.png" alt="Redolotus Ascend Logo">
+      </a>
+    </div>
+
+    <!-- Icons Right -->
+    <div class="header-right d-none d-lg-flex justify-content-end align-items-center">
+      <a href="https://www.instagram.com/redolotus.ascend" target="_blank" class="icon-btn" aria-label="Instagram" style="margin-right: 15px;" title="Instagram">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+      <a href="https://wa.me/916302004167" target="_blank" class="nav-link" aria-label="WhatsApp" style="margin-right: 20px; display: flex; align-items: center; gap: 6px;" title="WhatsApp">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+          <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path>
+        </svg>
+        +91 63020 04167
+      </a>
+      <a routerLink="/contact" class="nav-link" style="margin-right: 15px;" id="nav-account">My Account</a>
+      <button class="icon-btn position-relative" id="header-cart-btn" aria-label="Cart disabled" style="display:flex; align-items:center; opacity: 0.4; filter: blur(0.5px); cursor: not-allowed; pointer-events: none;" disabled>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-count" aria-label="0 items in cart">0</span>
+      </button>
+    </div>
+
+    <!-- Mobile Icons -->
+    <div class="d-flex d-lg-none align-items-center justify-content-end" style="flex: 1; gap: 12px;">
+      <button class="icon-btn position-relative" id="header-cart-btn-mobile" aria-label="Cart disabled" style="opacity: 0.4; filter: blur(0.5px); cursor: not-allowed; pointer-events: none;" disabled>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-count">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mega menu overlay backdrop -->
+<div class="mega-backdrop" [class.visible]="megaMenuOpen" (click)="megaMenuOpen = false"></div>
+
+<!-- ===================== MOBILE OFFCANVAS ===================== -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+  <div class="offcanvas-header border-bottom">
+    <img src="assets/rlaimg.png" alt="Redolotus Ascend" style="height: 40px; object-fit: contain;">
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;">Home</a></li>
+      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/collection" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;">All Perfumes</a></li>
+      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/collection" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;">Floral</a></li>
+      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/collection" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;">Woody</a></li>
+      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/collection" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;">Fresh & Citrus</a></li>
+      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/story" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;">About Us</a></li>
+      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/ingredients" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;">Ingredients</a></li>
+      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/contact" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;">Contact Us</a></li>
+      <li class="nav-item d-flex gap-3 pt-3">
+        <a href="https://www.instagram.com/redolotus.ascend" target="_blank" class="text-dark" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="https://wa.me/916302004167" target="_blank" class="text-dark" aria-label="WhatsApp">
+          <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

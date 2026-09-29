@@ -1,0 +1,23 @@
+.contact-info-link {
+  color: var(--text-dark);
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--gold-accent) !important;
+  }
+}
+
+.icon-btn-social {
+  background: var(--wine-primary);
+  color: white;
+  transition: background 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: var(--gold-accent) !important;
+    color: white !important;
+    transform: translateY(-2px);
+  }
+}

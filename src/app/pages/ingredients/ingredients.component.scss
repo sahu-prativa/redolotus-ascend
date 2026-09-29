@@ -1,0 +1,11 @@
+.ingredient-card {
+  background-color: var(--cream-bg);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+  &:hover {
+    border-color: var(--gold-accent);
+    transform: translateY(-5px);
+  }
+}

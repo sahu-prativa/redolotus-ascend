@@ -1,0 +1,516 @@
+<!-- ============================================================
+     1. HERO CAROUSEL — CINEMATIC SPLIT
+     ============================================================ -->
+<section class="hero-carousel"
+         (touchstart)="onHeroTouchStart($event)"
+         (touchend)="onHeroTouchEnd($event)"
+         aria-label="Hero banner carousel">
+
+  <!-- Background Layer -->
+  <div class="hero-slide" [class.fading]="heroFading"
+       [style.background-image]="'url(' + heroSlides[currentHeroSlide].bg + ')'">
+
+    <!-- Dark Overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Content Split -->
+    <div class="hero-inner">
+
+      <!-- Left: Text Content -->
+      <div class="hero-text-col" [class.animate-in]="!heroFading">
+        <p class="hero-eyebrow">
+          <span class="hero-eyebrow-line"></span>
+          {{ heroSlides[currentHeroSlide].subtitle }}
+          <span class="hero-eyebrow-line"></span>
+        </p>
+        <h1 class="hero-title">{{ heroSlides[currentHeroSlide].title }}</h1>
+        <div class="hero-title-accent"></div>
+        <p class="hero-desc">{{ heroSlides[currentHeroSlide].desc }}</p>
+        <div class="hero-cta">
+          <a routerLink="/collection" class="btn-hero-primary">
+            <span>{{ heroSlides[currentHeroSlide].cta }}</span>
+            <svg class="btn-arrow-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a routerLink="/collection" class="btn-hero-ghost">VIEW ALL</a>
+        </div>
+
+        <!-- Floating Scent Notes -->
+        <div class="hero-scent-tags">
+          <span class="scent-tag" *ngFor="let note of heroSlides[currentHeroSlide].notes">{{ note }}</span>
+        </div>
+      </div>
+
+      <!-- Right: Floating Product Image -->
+      <div class="hero-img-col" [class.animate-in]="!heroFading">
+        <div class="hero-img-halo"></div>
+        <div class="hero-img-ring"></div>
+        <img [src]="heroSlides[currentHeroSlide].productImg"
+             [alt]="heroSlides[currentHeroSlide].title"
+             class="hero-product-img">
+        <div class="hero-img-glow"></div>
+      </div>
+    </div>
+
+    <!-- Progress Bar Dots -->
+    <div class="hero-progress-bar" aria-label="Slide navigation" role="tablist">
+      <button *ngFor="let slide of heroSlides; let i = index"
+              class="hero-progress-item"
+              [class.active]="i === currentHeroSlide"
+              (click)="goToSlide(i)"
+              [attr.aria-selected]="i === currentHeroSlide"
+              [attr.aria-label]="'Go to slide ' + (i + 1)"
+              role="tab">
+        <span class="progress-fill"></span>
+      </button>
+    </div>
+
+    <!-- Arrow Navigation -->
+    <button class="hero-arrow hero-arrow--prev" (click)="prevHeroSlide()" aria-label="Previous slide">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="hero-arrow hero-arrow--next" (click)="nextHeroSlide()" aria-label="Next slide">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+
+    <!-- Scroll Hint -->
+    <div class="hero-scroll-hint">
+      <span class="scroll-line"></span>
+      <span class="scroll-text">SCROLL</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     2. TRUST BAR
+     ============================================================ -->
+<div class="trust-bar" role="list" aria-label="Key brand promises">
+  <div class="trust-bar-inner">
+    <div class="trust-item" role="listitem">
+      <span class="trust-icon">✦</span>
+      <span>Free Shipping above ₹999</span>
+    </div>
+    <div class="trust-sep">|</div>
+    <div class="trust-item" role="listitem">
+      <span class="trust-icon">✦</span>
+      <span>100% Authentic Fragrances</span>
+    </div>
+    <div class="trust-sep">|</div>
+    <div class="trust-item" role="listitem">
+      <span class="trust-icon">✦</span>
+      <span>Easy 7-Day Returns</span>
+    </div>
+    <div class="trust-sep">|</div>
+    <div class="trust-item" role="listitem">
+      <span class="trust-icon">✦</span>
+      <span>COD Available</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     3. EXPLORE OUR FRAGRANCES CAROUSEL
+     ============================================================ -->
+<section class="product-carousel-section bg-cream" aria-labelledby="explore-title">
+  <div class="section-header-row container">
+    <div class="section-label-group">
+      <span class="section-label-eyebrow">Handcrafted for you</span>
+      <h2 class="section-title-left" id="explore-title">EXPLORE OUR FRAGRANCES</h2>
+      <div class="gold-divider-left"></div>
+    </div>
+    <a routerLink="/collection" class="view-all-link" aria-label="View all fragrances">
+      View All
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+
+  <div class="h-scroll-track container">
+    <div class="h-scroll-inner" id="explore-scroll" role="list">
+      <div class="product-scroll-card" *ngFor="let p of exploreProducts" role="listitem">
+        <div class="psc-img-wrap">
+          <span class="psc-badge">{{ p.badge }}</span>
+          <img [src]="p.img" [alt]="p.name" class="psc-img" loading="lazy">
+          <div class="psc-overlay">
+            <button class="psc-quick-add btn-gold-solid" [attr.aria-label]="'Quick add ' + p.name">
+              <span>+ Quick Add</span>
+            </button>
+          </div>
+        </div>
+        <div class="psc-info">
+          <h3 class="psc-name">{{ p.name }}</h3>
+          <div class="psc-stars" [attr.aria-label]="p.rating + ' out of 5 stars'">
+            <span class="star filled" *ngFor="let s of getStars(p.rating)">★</span>
+            <span class="star empty" *ngFor="let s of getEmptyStars(p.rating)">☆</span>
+            <span class="review-count">({{ p.reviews }})</span>
+          </div>
+          <div class="psc-price">
+            <span class="price-sale">₹{{ p.price.toLocaleString('en-IN') }}</span>
+            <span class="price-compare">₹{{ p.comparePrice.toLocaleString('en-IN') }}</span>
+            <span class="price-save">{{ getSavePct(p.price, p.comparePrice) }}% OFF</span>
+          </div>
+        </div>
+        <div class="psc-shine"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     4. BEST PARFUME CAROUSEL (DARK)
+     ============================================================ -->
+<section class="product-carousel-section bg-wine" aria-labelledby="bestparfume-title">
+  <div class="section-header-row container">
+    <div class="section-label-group">
+      <span class="section-label-eyebrow" style="color: rgba(201,169,106,0.6)">Perfect for Every Occasion</span>
+      <h2 class="section-title-left text-gold" id="bestparfume-title">GIFT SETS & NEW ARRIVALS</h2>
+      <div class="gold-divider-left"></div>
+    </div>
+    <a routerLink="/collection" class="view-all-link text-gold" aria-label="View all parfumes">
+      View All
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+
+  <div class="h-scroll-track container">
+    <div class="h-scroll-inner" id="giftsets-scroll" role="list">
+      <div class="product-scroll-card product-scroll-card--dark" *ngFor="let g of giftSets" role="listitem">
+        <div class="psc-img-wrap">
+          <span class="psc-badge psc-badge--save">{{ g.badge }}</span>
+          <img [src]="g.img" [alt]="g.name" class="psc-img" loading="lazy">
+          <div class="psc-overlay">
+            <button class="psc-quick-add btn-gold-solid" [attr.aria-label]="'Quick add ' + g.name">
+              <span>+ Quick Add</span>
+            </button>
+          </div>
+        </div>
+        <div class="psc-info">
+          <h3 class="psc-name text-light-cream">{{ g.name }}</h3>
+          <div class="psc-stars" [attr.aria-label]="g.rating + ' out of 5 stars'">
+            <span class="star filled" *ngFor="let s of getStars(g.rating)">★</span>
+            <span class="star empty" *ngFor="let s of getEmptyStars(g.rating)">☆</span>
+            <span class="review-count text-light-cream">({{ g.reviews }})</span>
+          </div>
+          <div class="psc-price">
+            <span class="price-sale">₹{{ g.price.toLocaleString('en-IN') }}</span>
+            <span class="price-compare">₹{{ g.comparePrice.toLocaleString('en-IN') }}</span>
+            <span class="price-save">{{ getSavePct(g.price, g.comparePrice) }}% OFF</span>
+          </div>
+        </div>
+        <div class="psc-shine"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     5. OUR SCENT FAMILIES
+     ============================================================ -->
+<section class="scent-families-section bg-cream" aria-labelledby="scent-families-title">
+  <div class="container">
+    <div class="section-center-header">
+      <span class="section-label-eyebrow center">Find your signature</span>
+      <h2 class="section-title" id="scent-families-title">OUR SCENT FAMILIES</h2>
+      <div class="gold-divider"></div>
+    </div>
+    <div class="scent-grid">
+      <a [routerLink]="f.link" class="family-card text-decoration-none"
+         *ngFor="let f of scentFamilies"
+         [attr.aria-label]="f.title + ' scent family'">
+        <div class="family-img-frame">
+          <img [src]="f.img" [alt]="f.title" class="family-img">
+          <div class="family-img-overlay">
+            <span class="family-explore-btn">Explore →</span>
+          </div>
+        </div>
+        <div class="family-info">
+          <h3 class="family-title">{{ f.title }}</h3>
+          <p class="family-subtitle">{{ f.subtitle }}</p>
+          <div class="family-underline"></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     6. BRAND BANNER — SPLIT STATS
+     ============================================================ -->
+<section class="brand-banner-section" aria-label="Brand statement">
+  <div class="brand-banner-overlay">
+    <div class="brand-banner-split">
+
+      <!-- Left: Stats -->
+      <div class="brand-stats-col">
+        <div class="brand-stat" *ngFor="let stat of brandStats">
+          <span class="brand-stat-number">{{ stat.value }}</span>
+          <span class="brand-stat-label">{{ stat.label }}</span>
+        </div>
+      </div>
+
+      <!-- Vertical Divider -->
+      <div class="brand-split-divider">
+        <div class="brand-split-line"></div>
+        <span class="brand-split-gem">✦</span>
+        <div class="brand-split-line"></div>
+      </div>
+
+      <!-- Right: Content -->
+      <div class="brand-content-col">
+        <p class="brand-banner-eyebrow">THE REDOLOTUS PROMISE</p>
+        <h2 class="brand-banner-title">100% Pure Ingredients.<br><em>Crafted in Small Batches.</em></h2>
+        <p class="brand-banner-desc">
+          We believe luxury should feel personal. That's why every bottle of RedoLotus Ascend is crafted with love and the purest ingredients, carefully blended to give you a rich, long-lasting fragrance that speaks for you.
+        </p>
+        <div class="brand-pillars">
+          <div class="brand-pillar">
+            <span class="brand-pillar-icon">✦</span>
+            <span>Pure Botanicals</span>
+          </div>
+          <div class="brand-pillar">
+            <span class="brand-pillar-icon">✦</span>
+            <span>Long-Lasting Sillage</span>
+          </div>
+          <div class="brand-pillar">
+            <span class="brand-pillar-icon">✦</span>
+            <span>Small-Batch Distilled</span>
+          </div>
+          <div class="brand-pillar">
+            <span class="brand-pillar-icon">✦</span>
+            <span>Cruelty Free</span>
+          </div>
+        </div>
+        <a routerLink="/story" class="btn-gold-outline mt-4 d-inline-block">OUR STORY →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     7. STICKY SHOP FRAGRANCES STRIP
+     ============================================================ -->
+<div class="sticky-shop-strip" [class.visible]="stripVisible" role="complementary" aria-label="Quick shop strip">
+  <div class="sticky-strip-inner">
+    <span class="sticky-strip-label">SHOP FRAGRANCES</span>
+    <div class="sticky-strip-scroll" role="list">
+      <div class="strip-item" *ngFor="let p of stripProducts" role="listitem">
+        <img [src]="p.img" [alt]="p.name" class="strip-img">
+        <div class="strip-info">
+          <span class="strip-name">{{ p.name }}</span>
+          <span class="strip-price">₹{{ p.price.toLocaleString('en-IN') }}</span>
+        </div>
+        <button class="strip-add-btn" [attr.aria-label]="'Add ' + p.name + ' to cart'">+Add</button>
+      </div>
+    </div>
+    <button class="strip-close-btn" (click)="stripVisible = false" aria-label="Close shop strip">✕</button>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     8. TESTIMONIALS CAROUSEL
+     ============================================================ -->
+<section class="testimonials-section bg-cream" aria-labelledby="testimonials-title">
+  <div class="container">
+    <div class="section-center-header">
+      <span class="section-label-eyebrow center">Loved worldwide</span>
+      <h2 class="section-title" id="testimonials-title">WHAT OUR CUSTOMERS SAY</h2>
+      <div class="gold-divider"></div>
+    </div>
+
+    <div class="testimonial-carousel">
+      <!-- Prev Arrow -->
+      <button class="testi-arrow testi-arrow--prev"
+              (click)="goToTestimonial((currentTestimonial - 1 + testimonials.length) % testimonials.length)"
+              aria-label="Previous review">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <div class="testimonial-card" [class.fading]="testimonialFading">
+        <!-- Decorative quote mark -->
+        <span class="testi-quote-mark">"</span>
+        <!-- Stars -->
+        <div class="testi-stars" [attr.aria-label]="testimonials[currentTestimonial].rating + ' stars'">
+          <span class="star filled" *ngFor="let s of getStars(testimonials[currentTestimonial].rating)">★</span>
+        </div>
+        <blockquote class="testi-text">"{{ testimonials[currentTestimonial].review }}"</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">
+            <span class="testi-avatar-initials">{{ testimonials[currentTestimonial].name | slice:0:1 }}</span>
+          </div>
+          <div class="testi-author-info">
+            <span class="testi-name">{{ testimonials[currentTestimonial].name }}</span>
+            <span class="testi-product">Verified · {{ testimonials[currentTestimonial].product }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next Arrow -->
+      <button class="testi-arrow testi-arrow--next"
+              (click)="goToTestimonial((currentTestimonial + 1) % testimonials.length)"
+              aria-label="Next review">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+    <!-- Dots -->
+    <div class="testi-dots" role="tablist">
+      <button *ngFor="let t of testimonials; let i = index"
+              class="testi-dot" [class.active]="i === currentTestimonial"
+              (click)="goToTestimonial(i)"
+              [attr.aria-label]="'Review ' + (i + 1)"
+              [attr.aria-selected]="i === currentTestimonial"
+              role="tab">
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     9. BRAND VALUES — MARQUEE STRIP
+     ============================================================ -->
+<section class="bg-wine" aria-label="Our brand values" style="padding: 0;">
+  <div class="press-marquee-outer" aria-hidden="true" style="padding: 5px 0;">
+    <div class="press-marquee-track">
+      <!-- Duplicate set for seamless loop -->
+      <div class="press-logo-item" *ngFor="let item of marqueeItems" [attr.aria-label]="item.name">
+        <span class="press-logo-text" style="font-size: 1.2rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.8), 0 0 15px rgba(255,255,255,0.5); padding: 5px 28px;">{{ item.name }}</span>
+        <span class="press-sep" style="font-size: 1.4rem; color: #fff; margin: 0 40px; text-shadow: 0 0 8px rgba(255,255,255,0.8), 0 0 15px rgba(255,255,255,0.5);">✦</span>
+      </div>
+      <div class="press-logo-item" *ngFor="let item of marqueeItems" aria-hidden="true">
+        <span class="press-logo-text" style="font-size: 1.2rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.8), 0 0 15px rgba(255,255,255,0.5); padding: 5px 28px;">{{ item.name }}</span>
+        <span class="press-sep" style="font-size: 1.4rem; color: #fff; margin: 0 40px; text-shadow: 0 0 8px rgba(255,255,255,0.8), 0 0 15px rgba(255,255,255,0.5);">✦</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     10. BLOG / JOURNAL — MAGAZINE GRID
+     ============================================================ -->
+<section class="journal-section bg-cream" aria-labelledby="journal-title">
+  <div class="container">
+    <div class="section-center-header">
+      <span class="section-label-eyebrow center">Ideas &amp; Inspirations</span>
+      <h2 class="section-title" id="journal-title">THE REDOLOTUS JOURNAL</h2>
+      <div class="gold-divider"></div>
+    </div>
+
+    <div class="journal-magazine-grid">
+      <!-- Featured large card -->
+      <article class="journal-card journal-card--featured" [attr.aria-label]="blogPosts[0].title">
+        <a routerLink="/story" class="journal-img-link" [attr.aria-label]="'Read: ' + blogPosts[0].title">
+          <div class="journal-img-wrap">
+            <img [src]="blogPosts[0].img" [alt]="blogPosts[0].title" class="journal-img" loading="lazy">
+            <div class="journal-img-gradient"></div>
+          </div>
+          <div class="journal-featured-overlay">
+            <span class="journal-date">{{ blogPosts[0].date }}</span>
+            <h3 class="journal-title-text journal-title-featured">{{ blogPosts[0].title }}</h3>
+            <p class="journal-excerpt">{{ blogPosts[0].excerpt }}</p>
+            <span class="journal-read-more">Read Article →</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- Side cards -->
+      <div class="journal-side-cards">
+        <article class="journal-card journal-card--side"
+                 *ngFor="let post of blogPosts.slice(1)"
+                 [attr.aria-label]="post.title">
+          <a routerLink="/story" class="journal-img-link" [attr.aria-label]="'Read: ' + post.title">
+            <div class="journal-img-wrap">
+              <img [src]="post.img" [alt]="post.title" class="journal-img" loading="lazy">
+            </div>
+          </a>
+          <div class="journal-body">
+            <span class="journal-date">{{ post.date }}</span>
+            <h3 class="journal-title-text">{{ post.title }}</h3>
+            <p class="journal-excerpt">{{ post.excerpt }}</p>
+            <a routerLink="/story" class="journal-read-more" [attr.aria-label]="'Read ' + post.title">Read More →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     EXIT-INTENT / SCROLL POPUP
+     ============================================================ -->
+<div class="popup-overlay" [class.active]="popupVisible" (click)="dismissPopup()"
+     role="dialog" aria-modal="true" aria-labelledby="popup-title" aria-describedby="popup-desc">
+  <div class="popup-box" (click)="$event.stopPropagation()">
+
+    <button class="popup-close" (click)="dismissPopup()" aria-label="Close offer popup">✕</button>
+
+    <span class="popup-corner popup-corner--tl"></span>
+    <span class="popup-corner popup-corner--tr"></span>
+    <span class="popup-corner popup-corner--bl"></span>
+    <span class="popup-corner popup-corner--br"></span>
+
+    <div class="popup-split">
+
+      <!-- Left: image -->
+      <div class="popup-image">
+        <div class="popup-img-badge">EXCLUSIVE</div>
+      </div>
+
+      <!-- Right: content -->
+      <div class="popup-content">
+        <div class="popup-top-band">
+          <span class="popup-band-line"></span>
+          <span class="popup-band-gem">✦</span>
+          <span class="popup-band-label">EXCLUSIVE OFFER</span>
+          <span class="popup-band-gem">✦</span>
+          <span class="popup-band-line"></span>
+        </div>
+
+        <p class="popup-eyebrow">REDOLOTUS ASCEND</p>
+
+        <h2 class="popup-title" id="popup-title">
+          <span class="popup-title-small">A Gift</span>
+          <span class="popup-title-large">Just For You</span>
+        </h2>
+
+        <div class="popup-ornament">
+          <span class="popup-ornament-line"></span>
+          <span class="popup-ornament-icon">✿</span>
+          <span class="popup-ornament-line"></span>
+        </div>
+
+        <p class="popup-desc" id="popup-desc">
+          Receive a <strong>FREE Travel-Size Perfume</strong><br>
+          worth <strong>₹499</strong> on every order above <strong>₹1,999</strong>
+        </p>
+
+        <div class="popup-code-wrap">
+          <p class="popup-code-label">USE CODE AT CHECKOUT</p>
+          <div class="popup-code">
+            <span class="popup-code-text">FREEPERFUME</span>
+            <span class="popup-code-shimmer"></span>
+          </div>
+        </div>
+
+        <a routerLink="/collection" class="popup-cta-btn" (click)="dismissPopup()" aria-label="Shop now and claim offer">
+          <span class="popup-cta-text">SHOP NOW &amp; CLAIM</span>
+          <span class="popup-cta-arrow">→</span>
+        </a>
+
+        <div class="popup-bottom">
+          <span class="popup-bottom-line"></span>
+          <p class="popup-dismiss" (click)="dismissPopup()" role="button" tabindex="0" (keyup.enter)="dismissPopup()">
+            No thanks, I'll pass
+          </p>
+          <span class="popup-bottom-line"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

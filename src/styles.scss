@@ -1,0 +1,207 @@
+:root {
+  /* Redolotus Ascend Luxury Theme Variables */
+  --wine-primary: #5C1A2B;
+  --wine-dark: #3E0F1C;
+  --gold-accent: #C9A96A;
+  --cream-bg: #F5EFE1;
+  
+  --text-dark: #2B2B2B;
+  --text-light: #F5EFE1;
+  --text-white: #ffffff;
+  
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', serif;
+  --font-sans: 'Montserrat', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-dark);
+  background: var(--cream-bg);
+  letter-spacing: 0.5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Common Global Classes */
+.section-title {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 28px;
+  margin: 60px 0 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--wine-primary);
+}
+
+.gold-divider {
+  width: 80px;
+  height: 2px;
+  background-color: var(--gold-accent);
+  margin: 0 auto 40px;
+  position: relative;
+}
+
+
+
+.bg-wine {
+  background-color: var(--wine-primary) !important;
+}
+.bg-cream {
+  background-color: var(--cream-bg) !important;
+}
+
+/* Buttons */
+.btn-gold-solid {
+  background-color: var(--gold-accent);
+  color: var(--wine-dark);
+  border: 1px solid var(--gold-accent);
+  padding: 12px 30px;
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 30px;
+}
+
+.btn-gold-solid:hover {
+  background-color: var(--wine-dark);
+  color: var(--gold-accent);
+  border-color: var(--wine-dark);
+}
+
+.btn-gold-outline {
+  background-color: transparent;
+  color: var(--gold-accent);
+  border: 1px solid var(--gold-accent);
+  padding: 12px 30px;
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 30px;
+}
+
+.btn-gold-outline:hover {
+  background-color: var(--gold-accent);
+  color: var(--wine-dark);
+}
+
+.btn-size-hover {
+  transition: all 0.3s ease !important;
+}
+
+.btn-size-hover:hover {
+  background-color: var(--gold-accent) !important;
+  color: var(--wine-dark) !important;
+  transform: scale(1.05);
+}
+
+/* Responsive Overrides */
+@media (max-width: 991px) {
+  .section-title { font-size: 24px; }
+}
+
+/* Product Cards (Global) */
+.product-card {
+  padding: 20px 15px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-stand {
+  margin: 0 auto 15px;
+  width: 65%;
+  aspect-ratio: 1;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.product-stand::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25%;
+  background: linear-gradient(90deg, #5c3a21, #8b5a33, #5c3a21);
+  border-radius: 50% / 20px;
+  box-shadow: 0 10px 10px rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.product-img {
+  width: 70%;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 10%;
+  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
+}
+
+.product-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--wine-dark);
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+
+.product-category {
+  font-size: 10px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.product-price {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+}
+
+.btn-add-cart {
+  width: 100%;
+  padding: 12px;
+  background: var(--wine-primary);
+  border: 1px solid var(--wine-primary);
+  color: var(--text-light);
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  transition: all 0.3s ease;
+  border-radius: 30px;
+}
+
+.btn-add-cart:hover {
+  background: var(--wine-dark);
+  border-color: var(--wine-dark);
+}
