@@ -1,41 +1,183 @@
-<!-- Hero Banner -->
-<header class="bg-wine py-5 text-center">
-  <div class="container py-5">
-    <h1 class="page-title" style="font-family: var(--font-serif); color: var(--gold-accent); letter-spacing: 2px;">About Us</h1>
-    <div class="gold-divider mt-4 mb-4"></div>
-    <p class="text-light mx-auto" style="max-width: 600px; font-style: italic; font-size: 16px; letter-spacing: 1px;">Where timeless traditions meet modern luxury, crafting scents that transcend the ordinary.</p>
+<!-- Hero Section: About RedoLotus Ascend -->
+<header class="about-hero">
+  <div class="container">
+    <h1 class="hero-title">About RedoLotus Ascend</h1>
+    <div class="gold-divider"></div>
+    <p class="hero-text">RedoLotus Ascend is a fragrance brand built on the belief that every scent has the power to
+      express individuality, evoke emotions, and create lasting impressions.</p>
+    <div class="mobile-hidden-text" [class.expanded]="expandedSections['about']">
+      <p class="hero-text">We bring together thoughtfully selected fragrances, distinctive scent experiences, and
+        accessible luxury to make everyday moments feel extraordinary.</p>
+      <p class="hero-text">From refreshing and uplifting notes to warm, deep, and captivating aromas, our collection is
+        designed for those who wish to express themselves through fragrance.</p>
+      <p class="hero-text">At RedoLotus Ascend, we believe fragrance is more than just a scent; it is a personal
+        expression of confidence, identity, and elegance.</p>
+      <p class="hero-motto">RedoLotus Ascend — Rise Beyond Ordinary.</p>
+    </div>
+    <button class="read-more-btn" (click)="toggleSection('about')" style="color: var(--wine-primary);">
+      {{ expandedSections['about'] ? 'Read Less' : 'Read More' }}
+    </button>
   </div>
 </header>
 
-<!-- Story Sections -->
-<section class="bg-cream py-5">
-  <div class="container py-5">
-    
-    <!-- Section 1: Image Left, Text Right -->
-    <div class="row align-items-center mb-5 pb-5">
-      <div class="col-md-6 mb-5 mb-md-0">
-        <div class="story-img-wrapper mx-auto" style="max-width: 420px; border: 2px solid var(--gold-accent); padding: 10px; background: var(--gold-accent);">
-          <img src="assets/ChatGPT Image Jul 26, 2026, 06_24_41 PM.png" alt="Our Heritage" class="img-fluid w-100" style="filter: brightness(0.9);">
+<!-- Section 1: Our Story -->
+<section class="content-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0 pe-lg-5">
+        <div class="image-frame">
+          <img src="assets/redolotus_heritage_1790861531590.png" alt="Our Heritage and Story">
         </div>
       </div>
-      <div class="col-md-6 ps-md-5">
-        <h2 class="mb-4" style="font-family: var(--font-serif); color: var(--wine-primary); text-transform: uppercase; letter-spacing: 1.5px;">Our Heritage</h2>
-        <p class="story-text" style="font-family: var(--font-serif); color: var(--text-dark); line-height: 2.2; font-size: 18px; text-align: justify;">At Redolotus Ascend, our mission is to craft exceptional fragrances that serve as a bridge between the physical and the spiritual. We believe that a scent is more than just a fragrance; it is an aura, an identity, and a memory encapsulated in a bottle. Drawn from ancient traditions and infused with contemporary finesse, our creations reflect the pinnacle of olfactory art.</p>
+      <div class="col-lg-6 text-content ps-lg-4">
+        <h2>Our Story</h2>
+        <p>Every meaningful journey begins with a vision.</p>
+        <p>RedoLotus Ascend was born from a simple yet powerful idea to make fragrance a beautiful expression of
+          individuality, confidence, and personal identity.</p>
+        <div class="mobile-hidden-text" [class.expanded]="expandedSections['story']">
+          <p>Inspired by the elegance of fragrances and the emotions they evoke, we began our journey with a passion for
+            creating distinctive scent experiences that feel personal, memorable, and accessible.</p>
+          <p>What started as a vision gradually grew into a fragrance brand dedicated to bringing together thoughtful
+            selections, quality, and a touch of everyday luxury.</p>
+          <p>For us, every fragrance tells a story, every note creates an impression, and every individual deserves a
+            scent that feels uniquely theirs. Our journey is still unfolding, and with every step, we continue to rise
+            beyond the ordinary.</p>
+          <p class="highlight-quote">RedoLotus Ascend — Rise Beyond Ordinary.</p>
+        </div>
+        <button class="read-more-btn" (click)="toggleSection('story')">
+          {{ expandedSections['story'] ? 'Read Less' : 'Read More' }}
+        </button>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Section 2: Text Left, Image Right -->
-    <div class="row align-items-center mt-5 pt-5">
-      <div class="col-md-6 order-md-2 mb-5 mb-md-0">
-        <div class="story-img-wrapper mx-auto" style="max-width: 420px; border: 2px solid var(--gold-accent); padding: 10px; background: var(--gold-accent);">
-          <img src="assets/ChatGPT Image Jul 26, 2026, 06_24_50 PM.png" alt="The Craftsmanship" class="img-fluid w-100" style="filter: brightness(0.9);">
+<!-- Section 2: Our Vision -->
+<section class="content-section" style="background-color: var(--cream-bg);">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0 ps-lg-5">
+        <div class="image-frame">
+          <img src="assets/redolotus_vision_1790861549228.png" alt="Our Vision">
         </div>
       </div>
-      <div class="col-md-6 order-md-1 pe-md-5">
-        <h2 class="mb-4" style="font-family: var(--font-serif); color: var(--wine-primary); text-transform: uppercase; letter-spacing: 1.5px;">The Craftsmanship</h2>
-        <p class="story-text" style="font-family: var(--font-serif); color: var(--text-dark); line-height: 2.2; font-size: 18px; text-align: justify;">We envision a world where luxury is accessible and every individual can express their unique persona through the power of scent. We strive to be globally recognized for our unmatched quality, innovation, and dedication. Every drop is meticulously curated by master perfumers, ensuring a harmonious blend of rare and precious ingredients sourced from around the globe.</p>
+      <div class="col-lg-6 order-lg-1 text-content pe-lg-4">
+        <h2>Our Vision</h2>
+        <p>Our vision is to build RedoLotus Ascend into a fragrance brand that makes the beauty of fine fragrances
+          accessible to everyone.</p>
+        <p>We aspire to create meaningful fragrance experiences that celebrate individuality, inspire confidence, and
+          become a part of life's memorable moments.</p>
+        <div class="mobile-hidden-text" [class.expanded]="expandedSections['vision']">
+          <p>Through thoughtful fragrance collections, consistent quality, and a customer-first approach, we aim to grow
+            into a trusted name where elegance meets accessibility.</p>
+          <p>We envision a future where every individual can discover a fragrance that reflects their personality, tells
+            their story, and leaves a lasting impression.</p>
+          <p class="highlight-quote">To inspire confidence through fragrance and rise beyond the ordinary.</p>
+        </div>
+        <button class="read-more-btn" (click)="toggleSection('vision')">
+          {{ expandedSections['vision'] ? 'Read Less' : 'Read More' }}
+        </button>
       </div>
     </div>
+  </div>
+</section>
 
+<!-- Section 3: Our Philosophy -->
+<section class="banner-section">
+  <div class="container">
+    <h2>Our Philosophy</h2>
+    <div class="gold-divider"></div>
+    <p>At RedoLotus Ascend, we believe fragrance is more than just a scent; it is an expression of who you are.</p>
+    <p>Every fragrance carries a feeling, every note creates an emotion, and every scent has the power to leave a
+      lasting impression.</p>
+    <div class="mobile-hidden-text" [class.expanded]="expandedSections['philosophy']">
+      <p>Our philosophy is rooted in the belief that luxury should feel personal, elegance should be effortless, and
+        fragrance should be accessible without compromising the experience.</p>
+      <p>We focus on bringing together distinctive aromas, thoughtful selections, and meaningful experiences that allow
+        everyone to discover a scent that resonates with their individuality. Because the right fragrance doesn't just
+        complete your presence — it becomes a part of your identity.</p>
+      <p class="banner-motto">Wear Your Essence. Express Your Individuality.</p>
+    </div>
+    <button class="read-more-btn" (click)="toggleSection('philosophy')">
+      {{ expandedSections['philosophy'] ? 'Read Less' : 'Read More' }}
+    </button>
+  </div>
+</section>
+
+<!-- Section 4: Explore Our Collection -->
+<section class="content-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0 pe-lg-5">
+        <div class="image-frame">
+          <img src="assets/redolotus_collection_1790861566155.png" alt="Explore Our Collection">
+        </div>
+      </div>
+      <div class="col-lg-6 text-content ps-lg-4">
+        <h2>Explore Our Collection</h2>
+        <p>Discover a world of fragrances crafted to complement your individuality and elevate your everyday moments.
+        </p>
+        <p>From fresh and refreshing aromas to warm, sensual, and captivating notes, every fragrance in our collection
+          offers a distinctive experience.</p>
+        <div class="mobile-hidden-text" [class.expanded]="expandedSections['collection']">
+          <p>Whether you seek something subtle for everyday elegance, bold for unforgettable impressions, or a scent
+            that reflects your unique personality, find a fragrance that feels truly yours.</p>
+          <p>Explore our collection and discover the essence of your next signature scent.</p>
+          <p class="highlight-quote">Find Your Fragrance. Define Your Presence.</p>
+        </div>
+        <button class="read-more-btn" (click)="toggleSection('collection')">
+          {{ expandedSections['collection'] ? 'Read Less' : 'Read More' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 5: Our Promise -->
+<section class="content-section" style="background-color: var(--cream-bg);">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0 ps-lg-5">
+        <div class="image-frame">
+          <img src="assets/redolotus_promise_1790861585608.png" alt="Our Promise">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1 text-content pe-lg-4">
+        <h2>Our Promise</h2>
+        <p>At RedoLotus Ascend, your trust is at the heart of everything we do.</p>
+        <p>We are committed to offering thoughtfully selected fragrances, honest product information, and a smooth,
+          customer-friendly shopping experience.</p>
+        <div class="mobile-hidden-text" [class.expanded]="expandedSections['promise']">
+          <p>Every order is handled with care, every detail matters, and every customer deserves to feel valued.</p>
+          <p>We strive to make discovering and experiencing fragrance simple, enjoyable, and accessible, while
+            continuously working to earn your confidence through consistency and care.</p>
+          <p>Because our promise goes beyond fragrance; it is about creating an experience you can trust.</p>
+          <p class="highlight-quote">Your Trust. Our Commitment. Always.</p>
+        </div>
+        <button class="read-more-btn" (click)="toggleSection('promise')">
+          {{ expandedSections['promise'] ? 'Read Less' : 'Read More' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6: Rise Beyond Ordinary (Footer Call to Action) -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Rise Beyond Ordinary</h2>
+    <div class="gold-divider"></div>
+    <p>Your fragrance is more than a finishing touch. It is a reflection of your essence, your confidence, and your
+      individuality.</p>
+    <p>At RedoLotus Ascend, we invite you to embrace your uniqueness, express your personality, and make every moment
+      memorable through the power of fragrance.</p>
+    <div class="mobile-hidden-text" [class.expanded]="expandedSections['final']">
+      <p>Discover the scent that speaks to you. Make it yours. Let your presence tell the story.</p>
+      <h3 class="brand-name">RedoLotus Ascend</h3>
+      <p class="final-motto">RISE BEYOND ORDINARY.</p>
+    </div>
+    <button class="read-more-btn" (click)="toggleSection('final')" style="color: #fff; margin-bottom: 20px;">
+      {{ expandedSections['final'] ? 'Read Less' : 'Read More' }}
+    </button>
   </div>
 </section>

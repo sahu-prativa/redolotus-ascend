@@ -132,7 +132,7 @@
           <span class="psc-badge">{{ p.badge }}</span>
           <img [src]="p.img" [alt]="p.name" class="psc-img" loading="lazy">
           <div class="psc-overlay">
-            <button class="psc-quick-add btn-gold-solid" [attr.aria-label]="'Quick add ' + p.name">
+            <button class="psc-quick-add btn-gold-solid" [attr.aria-label]="'Quick add ' + p.name" (click)="handleQuickAdd(p)">
               <span>+ Quick Add</span>
             </button>
           </div>
@@ -180,7 +180,7 @@
           <span class="psc-badge psc-badge--save">{{ g.badge }}</span>
           <img [src]="g.img" [alt]="g.name" class="psc-img" loading="lazy">
           <div class="psc-overlay">
-            <button class="psc-quick-add btn-gold-solid" [attr.aria-label]="'Quick add ' + g.name">
+            <button class="psc-quick-add btn-gold-solid" [attr.aria-label]="'Quick add ' + g.name" (click)="handleQuickAdd(g)">
               <span>+ Quick Add</span>
             </button>
           </div>
@@ -303,7 +303,7 @@
           <span class="strip-name">{{ p.name }}</span>
           <span class="strip-price">₹{{ p.price.toLocaleString('en-IN') }}</span>
         </div>
-        <button class="strip-add-btn" [attr.aria-label]="'Add ' + p.name + ' to cart'">+Add</button>
+        <button class="strip-add-btn" [attr.aria-label]="'Add ' + p.name + ' to cart'" (click)="handleQuickAdd(p)">+Add</button>
       </div>
     </div>
     <button class="strip-close-btn" (click)="stripVisible = false" aria-label="Close shop strip">✕</button>

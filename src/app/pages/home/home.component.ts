@@ -242,4 +242,13 @@ export class HomeComponent implements OnInit, OnDestroy {
       }, 5000);
     }, 400);
   }
+
+  /* ========== QUICK ADD VIA WHATSAPP ========== */
+  handleQuickAdd(product: any): void {
+    const phoneNumber = '916302004167';
+    
+    const message = `Hello Redolotus Ascend! 🌸\n\nI would like to order:\n*Product:* ${product.name}\n*Quantity:* 1\n*Total Price:* ₹${product.price}\n\n*(Shipping charges extra)*`;
+    
+    window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`, '_blank');
+  }
 }

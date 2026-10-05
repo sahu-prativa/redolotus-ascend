@@ -133,14 +133,38 @@
   </div>
   <div class="offcanvas-body">
     <ul class="navbar-nav">
-      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;">Home</a></li>
-      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/collection" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;">All Perfumes</a></li>
-      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/collection" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;">Floral</a></li>
-      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/collection" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;">Woody</a></li>
-      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/collection" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;">Fresh & Citrus</a></li>
-      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/story" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;">About Us</a></li>
-      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/ingredients" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;">Ingredients</a></li>
-      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/contact" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;">Contact Us</a></li>
+      <!-- Collections Accordion Item -->
+      <li class="nav-item" style="border-bottom:1px solid #eee;">
+        <a class="nav-link text-dark fw-bold d-flex justify-content-between align-items-center" 
+           href="#mobileCollectionsDropdown" 
+           data-bs-toggle="collapse" 
+           role="button" 
+           aria-expanded="false" 
+           aria-controls="mobileCollectionsDropdown" 
+           style="font-size:14px; padding:12px 0;">
+          Collections
+          <svg viewBox="0 0 12 8" width="12" height="12" fill="none">
+            <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+        <div class="collapse" id="mobileCollectionsDropdown">
+          <ul class="list-unstyled ps-3 pb-2 mb-0">
+            <li><p class="text-muted mb-1 mt-2" style="font-size: 11px; font-weight: bold; letter-spacing: 1px;">SHOP BY SCENT</p></li>
+            <li><a class="nav-link text-dark" [routerLink]="['/collection']" [queryParams]="{filter: 'Floral'}" style="font-size:13px; padding:8px 0;" data-bs-dismiss="offcanvas">Floral</a></li>
+            <li><a class="nav-link text-dark" [routerLink]="['/collection']" [queryParams]="{filter: 'Woody'}" style="font-size:13px; padding:8px 0;" data-bs-dismiss="offcanvas">Woody</a></li>
+            <li><a class="nav-link text-dark" [routerLink]="['/collection']" [queryParams]="{filter: 'Fresh'}" style="font-size:13px; padding:8px 0;" data-bs-dismiss="offcanvas">Fresh & Citrus</a></li>
+            <li><a class="nav-link text-dark" [routerLink]="['/collection']" [queryParams]="{filter: 'Our Signature'}" style="font-size:13px; padding:8px 0;" data-bs-dismiss="offcanvas">Our Signature</a></li>
+            <li><a class="nav-link text-dark" routerLink="/collection" style="font-size:13px; padding:8px 0;" data-bs-dismiss="offcanvas">View All &rarr;</a></li>
+            
+            <li><p class="text-muted mb-1 mt-3" style="font-size: 11px; font-weight: bold; letter-spacing: 1px;">EXPLORE</p></li>
+            <li><a class="nav-link text-dark" [routerLink]="['/collection']" [queryParams]="{filter: 'Best Sellers'}" style="font-size:13px; padding:8px 0;" data-bs-dismiss="offcanvas">Best Sellers</a></li>
+            <li><a class="nav-link text-dark" [routerLink]="['/collection']" [queryParams]="{filter: 'New Launch'}" style="font-size:13px; padding:8px 0;" data-bs-dismiss="offcanvas">New Launch</a></li>
+            <li><a class="nav-link text-dark" [routerLink]="['/collection']" [queryParams]="{filter: 'Gift Sets'}" style="font-size:13px; padding:8px 0;" data-bs-dismiss="offcanvas">Gift Sets</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/story" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;" data-bs-dismiss="offcanvas">About Us</a></li>
+      <li class="nav-item"><a class="nav-link text-dark fw-bold" routerLink="/contact" style="font-size:14px; padding:12px 0; border-bottom:1px solid #eee;" data-bs-dismiss="offcanvas">Contact Us</a></li>
       <li class="nav-item d-flex gap-3 pt-3">
         <a href="https://www.instagram.com/redolotus.ascend" target="_blank" class="text-dark" aria-label="Instagram">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

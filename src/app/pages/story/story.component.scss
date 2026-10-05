@@ -1,0 +1,241 @@
+.about-hero {
+  position: relative;
+  background-color: var(--cream-bg); /* Changed from wine to cream to contrast with wine header */
+  color: var(--wine-primary);
+  padding: 120px 0;
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(201, 169, 106, 0.4);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at center, rgba(201, 169, 106, 0.1) 0%, transparent 80%);
+    z-index: 1;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  color: var(--wine-primary);
+  font-size: 3.5rem;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.hero-text {
+  font-family: var(--font-sans);
+  color: var(--text-dark);
+  font-size: 1.15rem;
+  line-height: 1.9;
+  max-width: 800px;
+  margin: 0 auto 15px;
+  opacity: 0.95;
+}
+
+.hero-motto {
+  margin-top: 40px;
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--wine-primary);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.content-section {
+  padding: 100px 0;
+  background: var(--text-white);
+  overflow: hidden;
+}
+
+.image-frame {
+  position: relative;
+  padding: 15px;
+  background: var(--gold-accent);
+  border: 1px solid rgba(92, 26, 43, 0.2);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s ease;
+  
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 50px rgba(0,0,0,0.2);
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: contrast(1.05) brightness(0.95);
+  }
+}
+
+.text-content {
+  h2 {
+    font-family: var(--font-serif);
+    color: var(--wine-primary);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  p {
+    font-family: var(--font-sans);
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    line-height: 2;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+  
+  .highlight-quote {
+    font-family: var(--font-serif);
+    color: var(--wine-primary);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 35px;
+    border-left: 4px solid var(--gold-accent);
+    padding-left: 20px;
+    font-style: italic;
+  }
+}
+
+.banner-section {
+  background-color: var(--cream-bg);
+  padding: 100px 0;
+  text-align: center;
+  position: relative;
+  border-top: 1px solid rgba(201, 169, 106, 0.3);
+  border-bottom: 1px solid rgba(201, 169, 106, 0.3);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at center, rgba(201, 169, 106, 0.15) 0%, transparent 70%);
+  }
+  
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+  
+  h2 {
+    font-family: var(--font-serif);
+    color: var(--wine-primary);
+    font-size: 3rem;
+    margin-bottom: 35px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  p {
+    font-family: var(--font-sans);
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    line-height: 2;
+    max-width: 800px;
+    margin: 0 auto 20px;
+  }
+  
+  .banner-motto {
+    font-family: var(--font-serif);
+    color: var(--wine-primary);
+    font-size: 2rem;
+    margin-top: 50px;
+    font-style: italic;
+  }
+}
+
+.final-cta {
+  background: var(--text-white);
+  padding: 120px 0;
+  text-align: center;
+  position: relative;
+  
+  h2 {
+    font-family: var(--font-serif);
+    color: var(--wine-primary);
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  p {
+    font-family: var(--font-sans);
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    line-height: 2;
+    max-width: 800px;
+    margin: 0 auto 20px;
+  }
+  
+  .brand-name {
+    color: var(--gold-accent); 
+    font-family: var(--font-serif); 
+    margin-top: 40px; 
+    font-size: 2rem; 
+    letter-spacing: 2px; 
+    text-transform: uppercase;
+  }
+  
+  .final-motto {
+    font-family: var(--font-serif);
+    color: var(--wine-primary);
+    font-size: 2.2rem;
+    margin-top: 15px;
+    font-style: italic;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 2.5rem; }
+  .text-content h2 { font-size: 2rem; }
+  .banner-section h2 { font-size: 2.2rem; }
+  .final-cta h2 { font-size: 2.5rem; }
+  .image-frame { margin-bottom: 40px; }
+
+  .mobile-hidden-text {
+    display: none;
+    &.expanded {
+      display: block;
+    }
+  }
+
+  .read-more-btn {
+    display: inline-block;
+    background: transparent;
+    border: none;
+    color: var(--gold-accent);
+    font-family: var(--font-sans);
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    padding: 0;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    
+    &:hover {
+      color: #e8c07a;
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  .read-more-btn {
+    display: none !important;
+  }
+  .mobile-hidden-text {
+    display: block !important;
+  }
+}

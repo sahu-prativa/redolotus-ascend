@@ -298,6 +298,8 @@ export class CollectionComponent implements OnInit {
   }
 
   handleAddToCart(perfume: Perfume) {
+    const phoneNumber = '916302004167';
+    
     if (perfume.id === 11) {
       // Travel Minis Combo selected!
       this.currentComboPerfume = perfume;
@@ -308,16 +310,25 @@ export class CollectionComponent implements OnInit {
       
       this.selectedComboPerfumes = [];
       this.showComboModal = true;
+    } else if (perfume.id === 10) {
+      // The Discovery Set - explicitly list the 5 batch scents
+      const sizeObj = perfume.sizes[perfume.selectedSizeIndex];
+      const total = sizeObj.price * perfume.quantity;
+      
+      const batch2List = this.batch2Scents.map(s => s.name).join('\n- ');
+      
+      const message = `Hello Redolotus Ascend! 🌸\n\nI would like to order:\n*Product:* ${perfume.name}\n*Size:* ${sizeObj.ml}\n*Quantity:* ${perfume.quantity}\n*Total Price:* ₹${total}\n\n*Included Scents:*\n- ${batch2List}\n\n*(Shipping charges extra)*`;
+      
+      window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`, '_blank');
     } else {
       // Normal WhatsApp Order logic
-      const phoneNumber = '916302004167';
       const sizeObj = perfume.sizes[perfume.selectedSizeIndex];
       const mlSuffix = (sizeObj.ml.toString().includes('ml') || sizeObj.ml.toString().includes('Vials')) ? '' : 'ml';
       const total = sizeObj.price * perfume.quantity;
       
       const message = `Hello Redolotus Ascend! 🌸\n\nI would like to order:\n*Product:* ${perfume.name}\n*Size:* ${sizeObj.ml}${mlSuffix}\n*Quantity:* ${perfume.quantity}\n*Total Price:* ₹${total}\n\n*(Shipping charges extra)*`;
       
-      window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+      window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`, '_blank');
     }
   }
 
@@ -341,7 +352,7 @@ export class CollectionComponent implements OnInit {
     
     const message = `Hello Redolotus Ascend! 🌸\n\nI would like to order a Custom Combo:\n*Product:* ${this.currentComboPerfume.name}\n*Package:* ${sizeObj.ml}\n*Quantity:* ${this.currentComboPerfume.quantity}\n*Total Price:* ₹${total}\n\n*My Selected Scents:*\n- ${this.selectedComboPerfumes.join('\n- ')}\n\n*(Shipping charges extra)*`;
     
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+    window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`, '_blank');
     this.showComboModal = false;
   }
 }

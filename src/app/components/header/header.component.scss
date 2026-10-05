@@ -307,6 +307,12 @@
 /* ===================== OFFCANVAS MOBILE MENU ===================== */
 .offcanvas {
   background-color: var(--cream-bg);
+  z-index: 1060;
+}
+
+/* Also ensure the backdrop covers the header */
+.offcanvas-backdrop {
+  z-index: 1055 !important;
 }
 
 .offcanvas-header {
