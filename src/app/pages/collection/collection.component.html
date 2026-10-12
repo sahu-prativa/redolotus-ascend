@@ -50,66 +50,92 @@
 </section>
 
 <!-- Product Grid -->
-<section class="collection-grid py-5 bg-cream">
+<section class="collection-grid py-5">
   <div class="container">
-    <div class="row gx-4 gy-5">
+    <div class="row g-4 justify-content-center">
       <!-- Dynamic Products -->
-      <div class="col-12 col-md-6 col-lg-4 col-xl-3" *ngFor="let perfume of filteredPerfumes">
-        <div class="product-card bg-cream" style="height: 100%; display: flex; flex-direction: column; text-align: center;">
-          <div class="product-stand d-flex justify-content-center" (click)="openQuickView(perfume)" style="cursor: pointer;">
-            <img [src]="perfume.image" [alt]="perfume.name" class="product-img" style="max-height: 250px; object-fit: contain;">
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 d-flex" *ngFor="let perfume of filteredPerfumes">
+        <div class="lux-product-card w-100">
+          
+          <!-- Product Visual Stage -->
+          <div class="lux-card-stage" (click)="openQuickView(perfume)" [title]="'Quick view ' + perfume.name">
+            <!-- Badges -->
+            <span class="lux-badge lux-badge-sig" *ngIf="perfume.tags.includes('Our Signature')">Signature</span>
+            <span class="lux-badge lux-badge-gold" *ngIf="!perfume.tags.includes('Our Signature') && perfume.tags.includes('Best Sellers')">Best Seller</span>
+            <span class="lux-badge lux-badge-wine" *ngIf="!perfume.tags.includes('Our Signature') && !perfume.tags.includes('Best Sellers') && perfume.tags.includes('New Launch')">New Launch</span>
+            <span class="lux-badge lux-badge-set" *ngIf="perfume.category === 'Gift Sets'">Discovery Set</span>
+
+            <!-- Quick View Trigger (Hover) -->
+            <button type="button" 
+                    class="lux-quick-view-btn" 
+                    *ngIf="perfume.id !== 10 && perfume.id !== 11" 
+                    (click)="$event.stopPropagation(); openQuickView(perfume)" 
+                    aria-label="Quick View">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+              </svg>
+              <span>Quick View</span>
+            </button>
+
+            <!-- Bottle Image -->
+            <img [src]="perfume.image" [alt]="perfume.name" class="lux-bottle-img" loading="lazy">
           </div>
-          
-          <div class="product-category mt-2" style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--wine-primary);">
-            {{ perfume.scentFamily }} | {{ perfume.category }}
-          </div>
-          
-          <h3 class="product-title mt-1 mb-1" style="color: var(--wine-dark); font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600;">
-            {{ perfume.name }}
-          </h3>
-          
-          <p class="product-tagline px-2 mb-2" style="font-size: 0.8rem; color: #666; min-height: 35px; font-style: italic;">
-            {{ perfume.tagline }}
-          </p>
-          
-          <!-- Size Selector -->
-          <div class="size-selector mb-2 mt-auto w-100 px-3">
-            <div class="d-flex flex-wrap gap-1 justify-content-center">
-              <button *ngFor="let size of perfume.sizes; let i = index" 
-                      class="btn btn-sm btn-size-hover" 
-                      [ngStyle]="{
-                        'border': '1px solid var(--gold-accent)', 
-                        'border-radius': '20px',
-                        'font-size': '0.75rem',
-                        'padding': '4px 10px',
-                        'background-color': perfume.selectedSizeIndex === i ? 'var(--gold-accent)' : 'transparent',
-                        'color': perfume.selectedSizeIndex === i ? 'var(--wine-dark)' : 'var(--wine-dark)'
-                      }"
-                      (click)="selectSize(perfume, i)">
-                {{ size.ml }}{{ (size.ml.toString().includes('ml') || size.ml.toString().includes('Vials')) ? '' : 'ml' }}
-              </button>
+
+          <!-- Product Details Body -->
+          <div class="lux-card-body">
+            <!-- Scent Category -->
+            <div class="lux-card-category">
+              {{ perfume.scentFamily }} &bull; {{ perfume.category }}
             </div>
-          </div>
-          
-          <div class="d-flex flex-column align-items-center mb-2 w-100 px-3">
-            <div class="product-price mb-2 d-flex flex-column align-items-center" style="color: var(--wine-dark);">
-              <span style="font-size: 1.4rem; font-weight: 600;">₹{{ perfume.sizes[perfume.selectedSizeIndex].price * perfume.quantity }}</span>
-              <span style="font-size: 0.75rem; color: #777; margin-top: -3px; font-weight: 400;">+ Shipping extra</span>
+
+            <!-- Perfume Name -->
+            <h3 class="lux-card-title" (click)="openQuickView(perfume)">
+              {{ perfume.name }}
+            </h3>
+
+            <!-- Tagline -->
+            <p class="lux-card-tagline">
+              {{ perfume.tagline }}
+            </p>
+
+            <!-- Size Selector Chips -->
+            <div class="lux-size-selector">
+              <div class="lux-size-chips">
+                <button *ngFor="let size of perfume.sizes; let i = index"
+                        type="button"
+                        class="lux-size-chip"
+                        [class.active]="perfume.selectedSizeIndex === i"
+                        (click)="selectSize(perfume, i)">
+                  {{ size.ml }}{{ (size.ml.toString().includes('ml') || size.ml.toString().includes('Vials')) ? '' : 'ml' }}
+                </button>
+              </div>
             </div>
-            
-            <div class="quantity-selector d-flex align-items-center justify-content-between" style="border: 1px solid rgba(201, 169, 106, 0.5); border-radius: 20px; padding: 2px 5px; width: 100px; background: rgba(255, 255, 255, 0.4);">
-              <button (click)="decreaseQuantity(perfume)" style="background: transparent; border: none; color: var(--wine-dark); cursor: pointer; font-size: 1.1rem; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; transition: 0.2s;">−</button>
-              <span style="font-family: var(--font-serif); color: var(--wine-dark); font-weight: 600; font-size: 0.95rem;">{{ perfume.quantity }}</span>
-              <button (click)="increaseQuantity(perfume)" style="background: transparent; border: none; color: var(--wine-dark); cursor: pointer; font-size: 1.1rem; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; transition: 0.2s;">+</button>
+
+            <!-- Price & Quantity Row -->
+            <div class="lux-price-row">
+              <div class="lux-price-block">
+                <div class="lux-price-val">₹{{ perfume.sizes[perfume.selectedSizeIndex].price * perfume.quantity }}</div>
+                <div class="lux-price-note">+ Shipping extra</div>
+              </div>
+
+              <!-- Quantity Stepper -->
+              <div class="lux-qty-pill">
+                <button type="button" class="lux-qty-btn" (click)="decreaseQuantity(perfume)" aria-label="Decrease quantity">−</button>
+                <span class="lux-qty-number">{{ perfume.quantity }}</span>
+                <button type="button" class="lux-qty-btn" (click)="increaseQuantity(perfume)" aria-label="Increase quantity">+</button>
+              </div>
             </div>
+
+            <!-- Order via WhatsApp CTA -->
+            <button type="button" class="lux-card-btn" (click)="handleAddToCart(perfume)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp whatsapp-icon" viewBox="0 0 16 16">
+                <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+              </svg>
+              <span>Order via WhatsApp</span>
+            </button>
           </div>
-          
-          <button (click)="handleAddToCart(perfume)" class="btn-add-cart w-100" style="background-color: var(--wine-dark); color: var(--gold-accent); border: none; padding: 12px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: 0.3s ease; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-              <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-            </svg>
-            Order via WhatsApp
-          </button>
+
         </div>
       </div>
     </div>

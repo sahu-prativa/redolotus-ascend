@@ -14,31 +14,37 @@ export class HomeComponent implements OnInit, OnDestroy {
   /* ========== HERO CAROUSEL ========== */
   heroSlides = [
     {
-      bg: 'assets/homescreen.png',
+      bg: '',
+      theme: 'wine',
+      productImg: 'assets/Catlog_imgs/maya_ascend_20ml.png',
+      subtitle: 'OUR NEW LAUNCH',
+      title: 'A Mysterious Blend,\nLet it Unfold.',
+      desc: 'Fruity, floral, aquatic and softly musky — with a secret formula that keeps you guessing.',
+      cta: 'SHOP MAYA ASCEND',
+      badge: 'Secret Formula',
+      notes: ['Fruity', 'Floral', 'Aquatic']
+    },
+    {
+      bg: '',
+      theme: 'amber',
       productImg: 'assets/Catlog_imgs/Ember_Shroud_20ml.png',
       subtitle: 'THE SIGNATURE COLLECTION',
       title: 'Shrouded Smoke,\nTimeless Veil.',
       desc: 'A mysterious composition where luminous florals meet sacred incense and creamy woods.',
       cta: 'DISCOVER EMBER SHROUD',
+      badge: 'Signature Scent',
       notes: ['Lily of the Valley', 'Frankincense', 'Sandalwood']
     },
     {
-      bg: 'assets/rlaimg-header.png',
-      productImg: 'assets/Catlog_imgs/maya_ascend_20ml.png',
-      subtitle: 'OUR NEW LAUNCH',
-      title: 'A Mysterious Blend,\nLet it Unfold.',
-      desc: 'Fruity, floral, aquatic and softly musky — with a character that keeps you guessing.',
-      cta: 'SHOP MAYA ASCEND',
-      notes: ['Fruity', 'Floral', 'Aquatic']
-    },
-    {
-      bg: 'assets/ChatGPT Image Jul 26, 2026, 06_23_53 PM.png',
+      bg: '',
+      theme: 'gold',
       productImg: 'assets/Catlog_imgs/2ml_combo.png',
       subtitle: 'GIFT OF FRAGRANCE',
-      title: 'The Perfect Perfume\nFor Every Occasion.',
+      title: 'The Perfect Discovery\nFor Every Mood.',
       desc: 'Experience all 5 signature scents from Batch 2 with our exclusive Discovery Set.',
       cta: 'EXPLORE GIFT SETS',
-      notes: ['2ml', '5 Vials', 'Signature']
+      badge: 'Discovery Set',
+      notes: ['2ml', '5 Vials', 'Artisanal']
     }
   ];
   currentHeroSlide = 0;
@@ -104,11 +110,101 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   /* ========== SCENT FAMILIES ========== */
   scentFamilies = [
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_23_53 PM.png', title: 'WOODY & OUD', subtitle: 'sandalwood · oud · musk', link: '/collection?filter=Woody' },
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_50 PM.png', title: 'FLORAL & SOFT', subtitle: 'rose · jasmine · lily', link: '/collection?filter=Floral' },
-    { img: 'assets/homescreen.png', title: 'SWEET & WARM', subtitle: 'marshmallow · vanilla · amber', link: '/collection?filter=Sweet' },
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_41 PM.png', title: 'FRESH & AQUATIC', subtitle: 'bergamot · sea salt · citrus', link: '/collection?filter=Fresh' }
+    {
+      title: 'WOODY & OUD',
+      subtitle: 'sandalwood · oud · musk',
+      link: '/collection?filter=Woody',
+      activeImgIndex: 0,
+      slides: [
+        {
+          img: 'assets/Catlog_imgs/midnight_soul_30ml.png',
+          name: 'Midnight Soul',
+          isCatalog: true
+        },
+        {
+          img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_13 PM.png',
+          name: 'Ember Shroud',
+          isCatalog: false
+        },
+        {
+          img: 'assets/Catlog_imgs/Velvet_noir_30ml.png',
+          name: 'Velvet Noir',
+          isCatalog: true
+        }
+      ]
+    },
+    {
+      title: 'FLORAL & SOFT',
+      subtitle: 'rose · jasmine · lily',
+      link: '/collection?filter=Floral',
+      activeImgIndex: 0,
+      slides: [
+        {
+          img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_50 PM.png',
+          name: 'Moksha Noir',
+          isCatalog: false
+        },
+        {
+          img: 'assets/Catlog_imgs/maya_ascend_30ml.png',
+          name: 'Maya Ascend',
+          isCatalog: true
+        },
+        {
+          img: 'assets/ChatGPT Image Jul 26, 2026, 06_25_05 PM.png',
+          name: 'Moksha Noir',
+          isCatalog: false
+        }
+      ]
+    },
+    {
+      title: 'SWEET & WARM',
+      subtitle: 'marshmallow · vanilla · amber',
+      link: '/collection?filter=Sweet',
+      activeImgIndex: 0,
+      slides: [
+        {
+          img: 'assets/Catlog_imgs/sunlit_soul_30ml.png',
+          name: 'Sunlit Soul',
+          isCatalog: true
+        },
+        {
+          img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_24 PM.png',
+          name: 'Marsh Glow',
+          isCatalog: false
+        },
+        {
+          img: 'assets/Catlog_imgs/Marsh_Glow_30ml.png',
+          name: 'Marsh Glow',
+          isCatalog: true
+        }
+      ]
+    },
+    {
+      title: 'FRESH & AQUATIC',
+      subtitle: 'bergamot · sea salt · citrus',
+      link: '/collection?filter=Fresh',
+      activeImgIndex: 0,
+      slides: [
+        {
+          img: 'assets/Catlog_imgs/Dewlight_30ml.png',
+          name: 'Dewlight',
+          isCatalog: true
+        },
+        {
+          img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_41 PM.png',
+          name: 'Maya Wave',
+          isCatalog: false
+        },
+        {
+          img: 'assets/ChatGPT Image Jul 26, 2026, 06_25_13 PM.png',
+          name: 'Maya Wave',
+          isCatalog: false
+        }
+      ]
+    }
   ];
+  private scentFamilyInterval: any;
+  hoveredFamilyIndex: number | null = null;
 
   /* ========== MARQUEE TEXTS ========== */
   marqueeItems = [
@@ -145,9 +241,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     return Math.round(((compare - price) / compare) * 100);
   }
 
+  setHoveredFamily(index: number | null): void {
+    this.hoveredFamilyIndex = index;
+  }
+
   /* ========== LIFECYCLE ========== */
   ngOnInit(): void {
-    this.heroInterval = setInterval(() => this.nextHeroSlide(), 5000);
+    // Scent family slow-motion slideshow (rotates every 4.2 seconds)
+    this.scentFamilyInterval = setInterval(() => {
+      this.scentFamilies.forEach((f, idx) => {
+        if (this.hoveredFamilyIndex !== idx) {
+          f.activeImgIndex = (f.activeImgIndex + 1) % f.slides.length;
+        }
+      });
+    }, 4200);
 
     this.testimonialInterval = setInterval(() => {
       this.testimonialFading = true;
@@ -161,6 +268,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.heroInterval) { clearInterval(this.heroInterval); }
     if (this.testimonialInterval) { clearInterval(this.testimonialInterval); }
+    if (this.scentFamilyInterval) { clearInterval(this.scentFamilyInterval); }
   }
 
   /* ========== HERO CAROUSEL CONTROLS ========== */

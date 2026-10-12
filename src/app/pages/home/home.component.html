@@ -1,22 +1,22 @@
 <!-- ============================================================
-     1. HERO CAROUSEL — CINEMATIC SPLIT
-     ============================================================ -->
+     1. HERO CAROUSEL — CINEMATIC SPLIT (TEMPORARILY COMMENTED OUT)
+     ============================================================
 <section class="hero-carousel"
          (touchstart)="onHeroTouchStart($event)"
          (touchend)="onHeroTouchEnd($event)"
          aria-label="Hero banner carousel">
 
-  <!-- Background Layer -->
+  [Background Layer]
   <div class="hero-slide" [class.fading]="heroFading"
-       [style.background-image]="'url(' + heroSlides[currentHeroSlide].bg + ')'">
+       [ngClass]="'hero-theme-' + heroSlides[currentHeroSlide].theme">
 
-    <!-- Dark Overlay -->
+    [Dark Overlay]
     <div class="hero-overlay"></div>
 
-    <!-- Content Split -->
+    [Content Split]
     <div class="hero-inner">
 
-      <!-- Left: Text Content -->
+      [Left: Text Content]
       <div class="hero-text-col" [class.animate-in]="!heroFading">
         <p class="hero-eyebrow">
           <span class="hero-eyebrow-line"></span>
@@ -34,24 +34,25 @@
           <a routerLink="/collection" class="btn-hero-ghost">VIEW ALL</a>
         </div>
 
-        <!-- Floating Scent Notes -->
+        [Floating Scent Notes]
         <div class="hero-scent-tags">
           <span class="scent-tag" *ngFor="let note of heroSlides[currentHeroSlide].notes">{{ note }}</span>
         </div>
       </div>
 
-      <!-- Right: Floating Product Image -->
+      [Right: Showcase Arch Stage]
       <div class="hero-img-col" [class.animate-in]="!heroFading">
-        <div class="hero-img-halo"></div>
-        <div class="hero-img-ring"></div>
-        <img [src]="heroSlides[currentHeroSlide].productImg"
-             [alt]="heroSlides[currentHeroSlide].title"
-             class="hero-product-img">
-        <div class="hero-img-glow"></div>
+        <div class="hero-showcase-card">
+          <span class="hero-showcase-badge">{{ heroSlides[currentHeroSlide].badge || 'Artisanal Extrait' }}</span>
+          <img [src]="heroSlides[currentHeroSlide].productImg"
+               [alt]="heroSlides[currentHeroSlide].title"
+               class="hero-product-img">
+          <div class="hero-showcase-ground"></div>
+        </div>
       </div>
     </div>
 
-    <!-- Progress Bar Dots -->
+    [Progress Bar Dots]
     <div class="hero-progress-bar" aria-label="Slide navigation" role="tablist">
       <button *ngFor="let slide of heroSlides; let i = index"
               class="hero-progress-item"
@@ -64,7 +65,7 @@
       </button>
     </div>
 
-    <!-- Arrow Navigation -->
+    [Arrow Navigation]
     <button class="hero-arrow hero-arrow--prev" (click)="prevHeroSlide()" aria-label="Previous slide">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
@@ -72,13 +73,14 @@
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
 
-    <!-- Scroll Hint -->
+    [Scroll Hint]
     <div class="hero-scroll-hint">
       <span class="scroll-line"></span>
       <span class="scroll-text">SCROLL</span>
     </div>
   </div>
 </section>
+-->
 
 
 <!-- ============================================================
@@ -217,10 +219,37 @@
     </div>
     <div class="scent-grid">
       <a [routerLink]="f.link" class="family-card text-decoration-none"
-         *ngFor="let f of scentFamilies"
+         *ngFor="let f of scentFamilies; let i = index"
+         (mouseenter)="setHoveredFamily(i)"
+         (mouseleave)="setHoveredFamily(null)"
          [attr.aria-label]="f.title + ' scent family'">
         <div class="family-img-frame">
-          <img [src]="f.img" [alt]="f.title" class="family-img">
+          <div class="family-slideshow">
+            <div *ngFor="let slide of f.slides; let slideIdx = index"
+                 class="family-slide-item"
+                 [class.active]="slideIdx === f.activeImgIndex"
+                 [class.is-catalog]="slide.isCatalog">
+              <img [src]="slide.img"
+                   [alt]="slide.name"
+                   class="family-img"
+                   [class.catalog-bottle]="slide.isCatalog"
+                   loading="lazy">
+            </div>
+          </div>
+
+          <!-- Active Product Pill Badge -->
+          <div class="family-product-badge">
+            <span class="badge-dot">✦</span>
+            <span>{{ f.slides[f.activeImgIndex].name }}</span>
+          </div>
+
+          <!-- Subtle Luxury Dot Indicators -->
+          <div class="family-slide-dots" aria-hidden="true">
+            <span *ngFor="let slide of f.slides; let slideIdx = index"
+                  class="family-dot"
+                  [class.active]="slideIdx === f.activeImgIndex"></span>
+          </div>
+
           <div class="family-img-overlay">
             <span class="family-explore-btn">Explore →</span>
           </div>

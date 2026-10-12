@@ -55,8 +55,8 @@ export class CollectionComponent implements OnInit {
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 350, image: 'assets/Catlog_imgs/Ember_Shroud_20ml.png' },
-        { ml: 30, price: 450, image: 'assets/Catlog_imgs/Ember_Shroud_30ml.png' },
+        { ml: 20, price: 250, image: 'assets/Catlog_imgs/Ember_Shroud_20ml.png' },
+        { ml: 30, price: 400, image: 'assets/Catlog_imgs/Ember_Shroud_30ml.png' },
         { ml: 50, price: 700, image: 'assets/Catlog_imgs/Ember_Shroud_30ml.png' }
       ],
       tags: ['Best Sellers', 'Woody'],
@@ -74,8 +74,8 @@ export class CollectionComponent implements OnInit {
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 350, image: 'assets/Catlog_imgs/Moksha_Noir_20ml.png' },
-        { ml: 30, price: 450, image: 'assets/Catlog_imgs/Moksha_Noir_30ml.png' },
+        { ml: 20, price: 250, image: 'assets/Catlog_imgs/Moksha_Noir_20ml.png' },
+        { ml: 30, price: 400, image: 'assets/Catlog_imgs/Moksha_Noir_30ml.png' },
         { ml: 50, price: 700, image: 'assets/Catlog_imgs/Moksha_Noir_30ml.png' }
       ],
       tags: ['Floral'],
@@ -93,8 +93,8 @@ export class CollectionComponent implements OnInit {
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 350, image: 'assets/Catlog_imgs/Marsh_Glow_20ml.png' },
-        { ml: 30, price: 450, image: 'assets/Catlog_imgs/Marsh_Glow_30ml.png' },
+        { ml: 20, price: 250, image: 'assets/Catlog_imgs/Marsh_Glow_20ml.png' },
+        { ml: 30, price: 400, image: 'assets/Catlog_imgs/Marsh_Glow_30ml.png' },
         { ml: 50, price: 700, image: 'assets/Catlog_imgs/Marsh_Glow_30ml.png' }
       ],
       tags: ['Best Sellers', 'Sweet'],
@@ -112,8 +112,8 @@ export class CollectionComponent implements OnInit {
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 350, image: 'assets/Catlog_imgs/Maya_Wave_20ml.png' },
-        { ml: 30, price: 450, image: 'assets/Catlog_imgs/Maya_Wave_30ml.png' },
+        { ml: 20, price: 250, image: 'assets/Catlog_imgs/Maya_Wave_20ml.png' },
+        { ml: 30, price: 400, image: 'assets/Catlog_imgs/Maya_Wave_30ml.png' },
         { ml: 50, price: 700, image: 'assets/Catlog_imgs/Maya_Wave_30ml.png' }
       ],
       tags: ['Fresh', 'Our Signature'],
@@ -131,8 +131,8 @@ export class CollectionComponent implements OnInit {
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 279, image: 'assets/Catlog_imgs/maya_ascend_20ml.png' },
-        { ml: 30, price: 449, image: 'assets/Catlog_imgs/maya_ascend_30ml.png' }
+        { ml: 20, price: 250, image: 'assets/Catlog_imgs/maya_ascend_20ml.png' },
+        { ml: 30, price: 400, image: 'assets/Catlog_imgs/maya_ascend_30ml.png' }
       ],
       tags: ['Floral', 'New Launch', 'Our Signature'],
       description: 'A mysterious fragrance created to be discovered, not explained. Fruity, floral, aquatic and softly musky — with a character that keeps you guessing.',
@@ -149,8 +149,8 @@ export class CollectionComponent implements OnInit {
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 279, image: 'assets/Catlog_imgs/Velvet_noir_20ml.png' },
-        { ml: 30, price: 449, image: 'assets/Catlog_imgs/Velvet_noir_30ml.png' }
+        { ml: 20, price: 250, image: 'assets/Catlog_imgs/Velvet_noir_20ml.png' },
+        { ml: 30, price: 400, image: 'assets/Catlog_imgs/Velvet_noir_30ml.png' }
       ],
       tags: ['Best Sellers', 'Woody', 'New Launch'],
       description: 'A warm, woody and creamy blend that is rich, powdery, and highly sophisticated. Perfect for leaving a mature and elegant impression.',
@@ -167,8 +167,8 @@ export class CollectionComponent implements OnInit {
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 279, image: 'assets/Catlog_imgs/midnight_soul_20ml.png' },
-        { ml: 30, price: 449, image: 'assets/Catlog_imgs/midnight_soul_30ml.png' }
+        { ml: 20, price: 250, image: 'assets/Catlog_imgs/midnight_soul_20ml.png' },
+        { ml: 30, price: 400, image: 'assets/Catlog_imgs/midnight_soul_30ml.png' }
       ],
       tags: ['Woody', 'New Launch'],
       description: 'A regal and mysterious fragrance that combines spicy amber with floral resins, settling into a majestic oud and woody base.',
@@ -185,8 +185,8 @@ export class CollectionComponent implements OnInit {
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 279, image: 'assets/Catlog_imgs/Dewlight_20ml.png' },
-        { ml: 30, price: 449, image: 'assets/Catlog_imgs/Dewlight_30ml.png' }
+        { ml: 20, price: 250, image: 'assets/Catlog_imgs/Dewlight_20ml.png' },
+        { ml: 30, price: 400, image: 'assets/Catlog_imgs/Dewlight_30ml.png' }
       ],
       tags: ['Fresh', 'New Launch'],
       description: 'A refreshing aquatic fragrance with a bright citrus opening and a soft, clean finish.',
@@ -203,8 +203,8 @@ export class CollectionComponent implements OnInit {
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 279, image: 'assets/Catlog_imgs/sunlit_soul_20ml.png' },
-        { ml: 30, price: 449, image: 'assets/Catlog_imgs/sunlit_soul_30ml.png' }
+        { ml: 20, price: 250, image: 'assets/Catlog_imgs/sunlit_soul_20ml.png' },
+        { ml: 30, price: 400, image: 'assets/Catlog_imgs/sunlit_soul_30ml.png' }
       ],
       tags: ['Best Sellers', 'Fresh', 'New Launch'],
       description: 'A bright and captivating fragrance that brings together fresh fruity apples, citrus, and a subtle hint of spicy cinnamon over a watery, musky base.',
