@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   heroSlides = [
     {
       bg: 'assets/homescreen.png',
-      productImg: 'assets/ChatGPT Image Jul 26, 2026, 06_23_59 PM.png',
+      productImg: 'assets/Catlog_imgs/Ember_Shroud_20ml.png',
       subtitle: 'THE SIGNATURE COLLECTION',
       title: 'Shrouded Smoke,\nTimeless Veil.',
       desc: 'A mysterious composition where luminous florals meet sacred incense and creamy woods.',
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
     {
       bg: 'assets/rlaimg-header.png',
-      productImg: 'assets/ChatGPT Image Jul 26, 2026, 06_24_24 PM.png',
+      productImg: 'assets/Catlog_imgs/maya_ascend_20ml.png',
       subtitle: 'OUR NEW LAUNCH',
       title: 'A Mysterious Blend,\nLet it Unfold.',
       desc: 'Fruity, floral, aquatic and softly musky — with a character that keeps you guessing.',
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
     {
       bg: 'assets/ChatGPT Image Jul 26, 2026, 06_23_53 PM.png',
-      productImg: 'assets/ChatGPT Image Jul 26, 2026, 06_24_13 PM.png',
+      productImg: 'assets/Catlog_imgs/2ml_combo.png',
       subtitle: 'GIFT OF FRAGRANCE',
       title: 'The Perfect Perfume\nFor Every Occasion.',
       desc: 'Experience all 5 signature scents from Batch 2 with our exclusive Discovery Set.',
@@ -56,31 +56,31 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   /* ========== EXPLORE PRODUCT CAROUSEL ========== */
   exploreProducts = [
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_23_59 PM.png', badge: 'Top Selling', name: 'Ember Shroud', rating: 5.0, reviews: 124, price: 350, comparePrice: 389 },
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_08 PM.png', badge: 'Top Selling', name: 'Moksha Noir', rating: 4.9, reviews: 89, price: 350, comparePrice: 389 },
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_13 PM.png', badge: 'Best Value', name: 'Marsh Glow', rating: 4.8, reviews: 76, price: 350, comparePrice: 389 },
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_24 PM.png', badge: 'Our Signature', name: 'Maya Ascend', rating: 5.0, reviews: 154, price: 279, comparePrice: 309 },
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_24 PM.png', badge: 'Our Signature', name: 'Maya Wave', rating: 4.9, reviews: 112, price: 350, comparePrice: 389 },
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_23_59 PM.png', badge: 'New Arrival', name: 'Velvet Noir', rating: 4.8, reviews: 65, price: 279, comparePrice: 309 }
+    { img: 'assets/Catlog_imgs/Ember_Shroud_20ml.png', badge: 'Top Selling', name: 'Ember Shroud', rating: 5.0, reviews: 124, price: 350, comparePrice: 389 },
+    { img: 'assets/Catlog_imgs/Moksha_Noir_20ml.png', badge: 'Top Selling', name: 'Moksha Noir', rating: 4.9, reviews: 89, price: 350, comparePrice: 389 },
+    { img: 'assets/Catlog_imgs/Marsh_Glow_20ml.png', badge: 'Best Value', name: 'Marsh Glow', rating: 4.8, reviews: 76, price: 350, comparePrice: 389 },
+    { img: 'assets/Catlog_imgs/maya_ascend_20ml.png', badge: 'Our Signature', name: 'Maya Ascend', rating: 5.0, reviews: 154, price: 279, comparePrice: 309 },
+    { img: 'assets/Catlog_imgs/Maya_Wave_20ml.png', badge: 'Our Signature', name: 'Maya Wave', rating: 4.9, reviews: 112, price: 350, comparePrice: 389 },
+    { img: 'assets/Catlog_imgs/Velvet_noir_20ml.png', badge: 'New Arrival', name: 'Velvet Noir', rating: 4.8, reviews: 65, price: 279, comparePrice: 309 }
   ];
 
   /* ========== BEST PARFUME CAROUSEL ========== */
   giftSets = [
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_08 PM.png', badge: 'New Launch', name: 'Midnight Soul', rating: 4.9, reviews: 76, price: 279, comparePrice: 309 },
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_13 PM.png', badge: 'New Launch', name: 'Dewlight', rating: 4.8, reviews: 54, price: 279, comparePrice: 309 },
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_24 PM.png', badge: 'New Launch', name: 'Sunlit Soul', rating: 4.7, reviews: 103, price: 279, comparePrice: 309 },
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_13 PM.png', badge: 'Save 10%', name: 'The Discovery Set (5x2ml)', rating: 5.0, reviews: 210, price: 169, comparePrice: 189 },
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_50 PM.png', badge: 'Save 11%', name: 'Travel Minis Combo (2x8ml)', rating: 4.9, reviews: 145, price: 249, comparePrice: 279 }
+    { img: 'assets/Catlog_imgs/midnight_soul_20ml.png', badge: 'New Launch', name: 'Midnight Soul', rating: 4.9, reviews: 76, price: 279, comparePrice: 309 },
+    { img: 'assets/Catlog_imgs/Dewlight_20ml.png', badge: 'New Launch', name: 'Dewlight', rating: 4.8, reviews: 54, price: 279, comparePrice: 309 },
+    { img: 'assets/Catlog_imgs/sunlit_soul_20ml.png', badge: 'New Launch', name: 'Sunlit Soul', rating: 4.7, reviews: 103, price: 279, comparePrice: 309 },
+    { img: 'assets/Catlog_imgs/2ml_combo.png', badge: 'Save 10%', name: 'The Discovery Set (5x2ml)', rating: 5.0, reviews: 210, price: 169, comparePrice: 189 },
+    { img: 'assets/Catlog_imgs/8mlx2_combo.png', badge: 'Save 11%', name: 'Travel Minis Combo (2x8ml)', rating: 4.9, reviews: 145, price: 249, comparePrice: 279 }
   ];
 
   /* ========== STICKY SHOP STRIP ========== */
   stripProducts = [
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_23_59 PM.png', name: 'Ember Shroud', price: 350 },
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_08 PM.png', name: 'Moksha Noir', price: 350 },
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_24 PM.png', name: 'Maya Ascend', price: 279 },
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_24 PM.png', name: 'Maya Wave', price: 350 },
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_24_13 PM.png', name: 'The Discovery Set', price: 169 },
-    { img: 'assets/ChatGPT Image Jul 26, 2026, 06_23_59 PM.png', name: 'Velvet Noir', price: 279 }
+    { img: 'assets/Catlog_imgs/Ember_Shroud_20ml.png', name: 'Ember Shroud', price: 350 },
+    { img: 'assets/Catlog_imgs/Moksha_Noir_20ml.png', name: 'Moksha Noir', price: 350 },
+    { img: 'assets/Catlog_imgs/maya_ascend_20ml.png', name: 'Maya Ascend', price: 279 },
+    { img: 'assets/Catlog_imgs/Maya_Wave_20ml.png', name: 'Maya Wave', price: 350 },
+    { img: 'assets/Catlog_imgs/2ml_combo.png', name: 'The Discovery Set', price: 169 },
+    { img: 'assets/Catlog_imgs/Velvet_noir_20ml.png', name: 'Velvet Noir', price: 279 }
   ];
   stripVisible = false;
   private lastScrollY = 0;

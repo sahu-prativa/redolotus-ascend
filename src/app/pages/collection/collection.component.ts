@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 interface PerfumeSize {
   ml: number | string;
   price: number;
+  image?: string;
 }
 
 interface Perfume {
@@ -50,13 +51,13 @@ export class CollectionComponent implements OnInit {
       tagline: 'Shrouded Smoke, Timeless Veil.',
       category: 'Signature Collection',
       scentFamily: 'Woody & Oud',
-      image: 'assets/ChatGPT Image Jul 26, 2026, 06_23_59 PM.png',
+      image: 'assets/Catlog_imgs/Ember_Shroud_20ml.png',
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 350 },
-        { ml: 30, price: 450 },
-        { ml: 50, price: 700 }
+        { ml: 20, price: 350, image: 'assets/Catlog_imgs/Ember_Shroud_20ml.png' },
+        { ml: 30, price: 450, image: 'assets/Catlog_imgs/Ember_Shroud_30ml.png' },
+        { ml: 50, price: 700, image: 'assets/Catlog_imgs/Ember_Shroud_30ml.png' }
       ],
       tags: ['Best Sellers', 'Woody'],
       description: 'A mysterious composition where luminous florals meet sacred incense and creamy woods. Ember Shroud unfolds like a veil of smoke—quietly powerful and deeply refined.',
@@ -69,13 +70,13 @@ export class CollectionComponent implements OnInit {
       tagline: 'Lavender Flames of Freedom.',
       category: 'Signature Collection',
       scentFamily: 'Floral',
-      image: 'assets/ChatGPT Image Jul 26, 2026, 06_24_08 PM.png',
+      image: 'assets/Catlog_imgs/Moksha_Noir_20ml.png',
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 350 },
-        { ml: 30, price: 450 },
-        { ml: 50, price: 700 }
+        { ml: 20, price: 350, image: 'assets/Catlog_imgs/Moksha_Noir_20ml.png' },
+        { ml: 30, price: 450, image: 'assets/Catlog_imgs/Moksha_Noir_30ml.png' },
+        { ml: 50, price: 700, image: 'assets/Catlog_imgs/Moksha_Noir_30ml.png' }
       ],
       tags: ['Floral'],
       description: 'Bold yet effortlessly elegant, Moksha Noir is a celebration of confidence and liberation. Sparkling citrus and aromatic lavender open into a radiant bouquet of white florals.',
@@ -88,13 +89,13 @@ export class CollectionComponent implements OnInit {
       tagline: 'Gooey Glow Over Smoky Depths.',
       category: 'Signature Collection',
       scentFamily: 'Sweet & Warm',
-      image: 'assets/ChatGPT Image Jul 26, 2026, 06_24_13 PM.png',
+      image: 'assets/Catlog_imgs/Marsh_Glow_20ml.png',
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 350 },
-        { ml: 30, price: 450 },
-        { ml: 50, price: 700 }
+        { ml: 20, price: 350, image: 'assets/Catlog_imgs/Marsh_Glow_20ml.png' },
+        { ml: 30, price: 450, image: 'assets/Catlog_imgs/Marsh_Glow_30ml.png' },
+        { ml: 50, price: 700, image: 'assets/Catlog_imgs/Marsh_Glow_30ml.png' }
       ],
       tags: ['Best Sellers', 'Sweet'],
       description: 'Indulgent yet sophisticated, Marsh Glow wraps the senses in a delicious blend of creamy sweetness and smoky woods. Comforting, addictive, and effortlessly elegant.',
@@ -107,13 +108,13 @@ export class CollectionComponent implements OnInit {
       tagline: 'Our Secret Formula • Let the mystery unfold.',
       category: 'Signature Collection',
       scentFamily: 'Fresh',
-      image: 'assets/ChatGPT Image Jul 26, 2026, 06_24_24 PM.png',
+      image: 'assets/Catlog_imgs/Maya_Wave_20ml.png',
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 350 },
-        { ml: 30, price: 450 },
-        { ml: 50, price: 700 }
+        { ml: 20, price: 350, image: 'assets/Catlog_imgs/Maya_Wave_20ml.png' },
+        { ml: 30, price: 450, image: 'assets/Catlog_imgs/Maya_Wave_30ml.png' },
+        { ml: 50, price: 700, image: 'assets/Catlog_imgs/Maya_Wave_30ml.png' }
       ],
       tags: ['Fresh', 'Our Signature'],
       description: 'Refreshing like the first ocean breeze at sunrise, Maya Wave blends sparkling citrus and juicy fruits with delicate lotus and white florals.',
@@ -126,12 +127,12 @@ export class CollectionComponent implements OnInit {
       tagline: 'Our Secret Formula • A mysterious blend.',
       category: 'Discovery Collection',
       scentFamily: 'Floral',
-      image: 'assets/ChatGPT Image Jul 26, 2026, 06_24_24 PM.png',
+      image: 'assets/Catlog_imgs/maya_ascend_20ml.png',
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 279 },
-        { ml: 30, price: 449 }
+        { ml: 20, price: 279, image: 'assets/Catlog_imgs/maya_ascend_20ml.png' },
+        { ml: 30, price: 449, image: 'assets/Catlog_imgs/maya_ascend_30ml.png' }
       ],
       tags: ['Floral', 'New Launch', 'Our Signature'],
       description: 'A mysterious fragrance created to be discovered, not explained. Fruity, floral, aquatic and softly musky — with a character that keeps you guessing.',
@@ -144,12 +145,12 @@ export class CollectionComponent implements OnInit {
       tagline: 'Intimate • Mature • Elegant',
       category: 'Discovery Collection',
       scentFamily: 'Woody & Oud',
-      image: 'assets/ChatGPT Image Jul 26, 2026, 06_23_59 PM.png',
+      image: 'assets/Catlog_imgs/Velvet_noir_20ml.png',
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 279 },
-        { ml: 30, price: 449 }
+        { ml: 20, price: 279, image: 'assets/Catlog_imgs/Velvet_noir_20ml.png' },
+        { ml: 30, price: 449, image: 'assets/Catlog_imgs/Velvet_noir_30ml.png' }
       ],
       tags: ['Best Sellers', 'Woody', 'New Launch'],
       description: 'A warm, woody and creamy blend that is rich, powdery, and highly sophisticated. Perfect for leaving a mature and elegant impression.',
@@ -162,12 +163,12 @@ export class CollectionComponent implements OnInit {
       tagline: 'Mysterious • Warm • Regal',
       category: 'Discovery Collection',
       scentFamily: 'Woody & Oud',
-      image: 'assets/ChatGPT Image Jul 26, 2026, 06_24_08 PM.png',
+      image: 'assets/Catlog_imgs/midnight_soul_20ml.png',
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 279 },
-        { ml: 30, price: 449 }
+        { ml: 20, price: 279, image: 'assets/Catlog_imgs/midnight_soul_20ml.png' },
+        { ml: 30, price: 449, image: 'assets/Catlog_imgs/midnight_soul_30ml.png' }
       ],
       tags: ['Woody', 'New Launch'],
       description: 'A regal and mysterious fragrance that combines spicy amber with floral resins, settling into a majestic oud and woody base.',
@@ -180,12 +181,12 @@ export class CollectionComponent implements OnInit {
       tagline: 'Fresh • Aquatic • Clean',
       category: 'Discovery Collection',
       scentFamily: 'Fresh',
-      image: 'assets/ChatGPT Image Jul 26, 2026, 06_24_13 PM.png',
+      image: 'assets/Catlog_imgs/Dewlight_20ml.png',
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 279 },
-        { ml: 30, price: 449 }
+        { ml: 20, price: 279, image: 'assets/Catlog_imgs/Dewlight_20ml.png' },
+        { ml: 30, price: 449, image: 'assets/Catlog_imgs/Dewlight_30ml.png' }
       ],
       tags: ['Fresh', 'New Launch'],
       description: 'A refreshing aquatic fragrance with a bright citrus opening and a soft, clean finish.',
@@ -198,12 +199,12 @@ export class CollectionComponent implements OnInit {
       tagline: 'Fresh • Fruity • Aquatic',
       category: 'Discovery Collection',
       scentFamily: 'Fresh',
-      image: 'assets/ChatGPT Image Jul 26, 2026, 06_24_24 PM.png',
+      image: 'assets/Catlog_imgs/sunlit_soul_20ml.png',
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: 20, price: 279 },
-        { ml: 30, price: 449 }
+        { ml: 20, price: 279, image: 'assets/Catlog_imgs/sunlit_soul_20ml.png' },
+        { ml: 30, price: 449, image: 'assets/Catlog_imgs/sunlit_soul_30ml.png' }
       ],
       tags: ['Best Sellers', 'Fresh', 'New Launch'],
       description: 'A bright and captivating fragrance that brings together fresh fruity apples, citrus, and a subtle hint of spicy cinnamon over a watery, musky base.',
@@ -216,11 +217,11 @@ export class CollectionComponent implements OnInit {
       tagline: 'Experience all 5 signature scents from Batch 2.',
       category: 'Gift Sets',
       scentFamily: 'Gift Sets & Combos',
-      image: 'assets/ChatGPT Image Jul 26, 2026, 06_24_13 PM.png',
+      image: 'assets/Catlog_imgs/2ml_combo.png',
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: '2ml x 5 Vials', price: 169 }
+        { ml: '2ml x 5 Vials', price: 169, image: 'assets/Catlog_imgs/2ml_combo.png' }
       ],
       tags: ['Gift Sets', 'New Launch']
     },
@@ -230,13 +231,13 @@ export class CollectionComponent implements OnInit {
       tagline: 'Mix and match your favorite 8ml travel perfumes.',
       category: 'Gift Sets',
       scentFamily: 'Gift Sets & Combos',
-      image: 'assets/ChatGPT Image Jul 26, 2026, 06_24_24 PM.png',
+      image: 'assets/Catlog_imgs/8mlx2_combo.png',
       selectedSizeIndex: 0,
       quantity: 1,
       sizes: [
-        { ml: '8ml x 2', price: 249 },
-        { ml: '8ml x 3', price: 349 },
-        { ml: '8ml x 5', price: 449 }
+        { ml: '8ml x 2', price: 249, image: 'assets/Catlog_imgs/8mlx2_combo.png' },
+        { ml: '8ml x 3', price: 349, image: 'assets/Catlog_imgs/8mlx3_combo.png' },
+        { ml: '8ml x 5', price: 449, image: 'assets/Catlog_imgs/8mlx5_combo.png' }
       ],
       tags: ['Gift Sets', 'New Launch']
     }
@@ -264,6 +265,9 @@ export class CollectionComponent implements OnInit {
   openQuickView(perfume: Perfume) {
     if (perfume.id === 10 || perfume.id === 11) return; // Skip combos for now, or handle differently
     this.selectedPerfumeForView = perfume;
+    if (perfume.sizes[perfume.selectedSizeIndex]?.image) {
+      perfume.image = perfume.sizes[perfume.selectedSizeIndex].image!;
+    }
     this.showQuickView = true;
   }
 
@@ -285,6 +289,9 @@ export class CollectionComponent implements OnInit {
 
   selectSize(perfume: Perfume, sizeIndex: number) {
     perfume.selectedSizeIndex = sizeIndex;
+    if (perfume.sizes[sizeIndex]?.image) {
+      perfume.image = perfume.sizes[sizeIndex].image!;
+    }
   }
 
   increaseQuantity(perfume: Perfume) {
