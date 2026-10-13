@@ -53,6 +53,35 @@ export class SeoService {
     this.meta.updateTag({ name: 'twitter:image',       content: ogImage });
   }
 
+  /**
+   * Injects a JSON-LD <script> tag into <head> with the given ID.
+   * If a script with the same ID exists, it replaces it (prevents duplicates).
+   */
+  setJsonLd(id: string, data: object): void {
+    // Remove existing script with this ID (dedup on SPA navigation)
+    const existing = this.document.getElementById(id);
+    if (existing) {
+      existing.remove();
+    }
+
+    const script = this.document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = id;
+    script.text = JSON.stringify(data);
+    this.document.head.appendChild(script);
+  }
+
+  /**
+   * Removes a JSON-LD script tag by its ID.
+   * Call this in ngOnDestroy() to clean up page-specific schemas.
+   */
+  removeJsonLd(id: string): void {
+    const el = this.document.getElementById(id);
+    if (el) {
+      el.remove();
+    }
+  }
+
   private setCanonical(url: string): void {
     // Remove any existing canonical tag
     const existing = this.document.querySelector('link[rel="canonical"]');

@@ -271,8 +271,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // Set SEO meta tags & canonical for homepage
     this.seoService.setPageSeo({
-      title: 'RedoLotus Ascend | Luxury Artisanal Perfumes & Fragrances India',
-      description: 'RedoLotus Ascend — luxury artisanal perfumes crafted in India. Explore distinctive scents, pure ingredients, and accessible luxury. Rise beyond ordinary.',
+      title: 'RedoLotus Ascend | Luxury Artisanal Perfumes & Long-Lasting Fragrances in India',
+      description: 'Discover RedoLotus Ascend — India\'s artisanal EDP perfume brand. Shop small-batch, long-lasting fragrances with exceptional sillage. Woody, floral, fresh & sweet scents. Free shipping above ₹999.',
       canonicalPath: ''
     });
 

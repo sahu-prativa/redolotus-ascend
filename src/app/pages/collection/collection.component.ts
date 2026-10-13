@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { SeoService } from '../../services/seo.service';
@@ -32,8 +32,10 @@ interface Perfume {
   templateUrl: './collection.component.html',
   styleUrl: './collection.component.scss'
 })
-export class CollectionComponent implements OnInit {
+export class CollectionComponent implements OnInit, OnDestroy {
   activeFilter = 'All Scents';
+
+  private readonly PRODUCT_SCHEMA_ID = 'ld-collection-products';
 
   constructor(
     private route: ActivatedRoute,
@@ -43,8 +45,8 @@ export class CollectionComponent implements OnInit {
   ngOnInit() {
     // Set SEO meta tags & canonical for collection page
     this.seoService.setPageSeo({
-      title: 'Our Perfume Collection | RedoLotus Ascend — Shop All Fragrances',
-      description: 'Browse the complete RedoLotus Ascend perfume collection. Discover luxury artisanal fragrances — from woody & oud to floral, fresh, and sweet scents. Shop now.',
+      title: 'Shop Luxury Perfumes Online India | RedoLotus Ascend Collection — EDP Fragrances from ₹250',
+      description: 'Explore 9+ artisanal EDP perfumes by RedoLotus Ascend. Long-lasting fragrances in woody, floral, fresh & sweet scent families. Starting ₹250. Order via WhatsApp. Free shipping above ₹999.',
       canonicalPath: 'collection'
     });
 
@@ -52,6 +54,223 @@ export class CollectionComponent implements OnInit {
       if (params['filter']) {
         this.activeFilter = params['filter'];
       }
+    });
+
+    // Inject Product JSON-LD structured data
+    this.addProductSchemas();
+  }
+
+  ngOnDestroy() {
+    // Remove product JSON-LD when navigating away to prevent duplicates
+    this.seoService.removeJsonLd(this.PRODUCT_SCHEMA_ID);
+  }
+
+  private addProductSchemas(): void {
+    const baseUrl = 'https://redolotusascend.com';
+    const brand = { "@type": "Brand", "name": "RedoLotus Ascend" };
+
+    const productSchemas = [
+      {
+        "@type": "Product",
+        "name": "Ember Shroud — Eau de Parfum",
+        "description": "A mysterious composition where luminous florals meet sacred incense and creamy woods. Long-lasting woody & oud EDP with exceptional sillage.",
+        "image": `${baseUrl}/assets/Catlog_imgs/Ember_Shroud_20ml.png`,
+        "brand": brand,
+        "category": "Eau de Parfum",
+        "url": `${baseUrl}/collection`,
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": "250",
+          "highPrice": "700",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "offerCount": "3"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "124", "bestRating": "5" }
+      },
+      {
+        "@type": "Product",
+        "name": "Moksha Noir — Eau de Parfum",
+        "description": "Bold yet elegant, a celebration of confidence. Sparkling citrus and aromatic lavender with a radiant bouquet of white florals. Long-lasting floral EDP.",
+        "image": `${baseUrl}/assets/Catlog_imgs/Moksha_Noir_20ml.png`,
+        "brand": brand,
+        "category": "Eau de Parfum",
+        "url": `${baseUrl}/collection`,
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": "250",
+          "highPrice": "700",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "offerCount": "3"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "89", "bestRating": "5" }
+      },
+      {
+        "@type": "Product",
+        "name": "Marsh Glow — Eau de Parfum",
+        "description": "Indulgent yet sophisticated — creamy marshmallow sweetness meets smoky oud and vanilla. Long-lasting sweet & warm EDP.",
+        "image": `${baseUrl}/assets/Catlog_imgs/Marsh_Glow_20ml.png`,
+        "brand": brand,
+        "category": "Eau de Parfum",
+        "url": `${baseUrl}/collection`,
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": "250",
+          "highPrice": "700",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "offerCount": "3"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "76", "bestRating": "5" }
+      },
+      {
+        "@type": "Product",
+        "name": "Maya Wave — Eau de Parfum",
+        "description": "Refreshing aquatic fragrance — sparkling citrus and juicy fruits with delicate lotus and white florals. Our signature secret formula EDP.",
+        "image": `${baseUrl}/assets/Catlog_imgs/Maya_Wave_20ml.png`,
+        "brand": brand,
+        "category": "Eau de Parfum",
+        "url": `${baseUrl}/collection`,
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": "250",
+          "highPrice": "700",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "offerCount": "3"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "112", "bestRating": "5" }
+      },
+      {
+        "@type": "Product",
+        "name": "Maya Ascend — Eau de Parfum",
+        "description": "A mysterious fragrance — fruity, floral, aquatic and softly musky. Our new launch secret formula EDP crafted in India.",
+        "image": `${baseUrl}/assets/Catlog_imgs/maya_ascend_20ml.png`,
+        "brand": brand,
+        "category": "Eau de Parfum",
+        "url": `${baseUrl}/collection`,
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": "250",
+          "highPrice": "400",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "offerCount": "2"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "154", "bestRating": "5" }
+      },
+      {
+        "@type": "Product",
+        "name": "Velvet Noir — Eau de Parfum",
+        "description": "A warm, woody and creamy blend — rich, powdery, and highly sophisticated. Whisky absolute, cedarwood and patchouli EDP.",
+        "image": `${baseUrl}/assets/Catlog_imgs/Velvet_noir_20ml.png`,
+        "brand": brand,
+        "category": "Eau de Parfum",
+        "url": `${baseUrl}/collection`,
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": "250",
+          "highPrice": "400",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "offerCount": "2"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "65", "bestRating": "5" }
+      },
+      {
+        "@type": "Product",
+        "name": "Midnight Soul — Eau de Parfum",
+        "description": "A regal and mysterious fragrance — spicy amber with floral resins, settling into majestic oud and woody base. Long-lasting EDP.",
+        "image": `${baseUrl}/assets/Catlog_imgs/midnight_soul_20ml.png`,
+        "brand": brand,
+        "category": "Eau de Parfum",
+        "url": `${baseUrl}/collection`,
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": "250",
+          "highPrice": "400",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "offerCount": "2"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "76", "bestRating": "5" }
+      },
+      {
+        "@type": "Product",
+        "name": "Dewlight — Eau de Parfum",
+        "description": "A refreshing aquatic fragrance with bright citrus opening and soft clean finish. Ginger, bergamot, green tea and neroli EDP.",
+        "image": `${baseUrl}/assets/Catlog_imgs/Dewlight_20ml.png`,
+        "brand": brand,
+        "category": "Eau de Parfum",
+        "url": `${baseUrl}/collection`,
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": "250",
+          "highPrice": "400",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "offerCount": "2"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "54", "bestRating": "5" }
+      },
+      {
+        "@type": "Product",
+        "name": "Sunlit Soul — Eau de Parfum",
+        "description": "Bright and captivating — fresh fruity apples, citrus, and spicy cinnamon over a watery musky base. Long-lasting fresh EDP.",
+        "image": `${baseUrl}/assets/Catlog_imgs/sunlit_soul_20ml.png`,
+        "brand": brand,
+        "category": "Eau de Parfum",
+        "url": `${baseUrl}/collection`,
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": "250",
+          "highPrice": "400",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "offerCount": "2"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "103", "bestRating": "5" }
+      },
+      {
+        "@type": "Product",
+        "name": "The Discovery Set — 5 x 2ml Fragrance Vials",
+        "description": "Experience all 5 signature scents from Batch 2 in convenient 2ml sample vials. Perfect gift for fragrance lovers.",
+        "image": `${baseUrl}/assets/Catlog_imgs/2ml_combo.png`,
+        "brand": brand,
+        "category": "Gift Set",
+        "url": `${baseUrl}/collection`,
+        "offers": {
+          "@type": "Offer",
+          "price": "169",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "210", "bestRating": "5" }
+      },
+      {
+        "@type": "Product",
+        "name": "Travel Minis Combo — 8ml Perfume Set",
+        "description": "Mix and match your favorite RedoLotus Ascend fragrances in travel-friendly 8ml bottles. Available in packs of 2, 3, or 5.",
+        "image": `${baseUrl}/assets/Catlog_imgs/8mlx2_combo.png`,
+        "brand": brand,
+        "category": "Gift Set",
+        "url": `${baseUrl}/collection`,
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": "249",
+          "highPrice": "449",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "offerCount": "3"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "145", "bestRating": "5" }
+      }
+    ];
+
+    this.seoService.setJsonLd(this.PRODUCT_SCHEMA_ID, {
+      "@context": "https://schema.org",
+      "@graph": productSchemas
     });
   }
 
