@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       bg: '',
       theme: 'wine',
       productImg: 'assets/Catlog_imgs/maya_ascend_20ml.png',
+      posterImg: 'assets/hero_banner_1.png',
+      alt: 'Maya Ascend — Luxury Fragrance',
       subtitle: 'OUR NEW LAUNCH',
       title: 'A Mysterious Blend,\nLet it Unfold.',
       desc: 'Fruity, floral, aquatic and softly musky — with a secret formula that keeps you guessing.',
@@ -28,6 +31,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       bg: '',
       theme: 'amber',
       productImg: 'assets/Catlog_imgs/Ember_Shroud_20ml.png',
+      posterImg: 'assets/hero_banner_2.png',
+      alt: 'Ember Shroud — Signature Collection',
       subtitle: 'THE SIGNATURE COLLECTION',
       title: 'Shrouded Smoke,\nTimeless Veil.',
       desc: 'A mysterious composition where luminous florals meet sacred incense and creamy woods.',
@@ -39,12 +44,27 @@ export class HomeComponent implements OnInit, OnDestroy {
       bg: '',
       theme: 'gold',
       productImg: 'assets/Catlog_imgs/2ml_combo.png',
+      posterImg: 'assets/hero_banner_3.png',
+      alt: 'The Discovery Set — Gift of Fragrance',
       subtitle: 'GIFT OF FRAGRANCE',
       title: 'The Perfect Discovery\nFor Every Mood.',
       desc: 'Experience all 5 signature scents from Batch 2 with our exclusive Discovery Set.',
       cta: 'EXPLORE GIFT SETS',
       badge: 'Discovery Set',
       notes: ['2ml', '5 Vials', 'Artisanal']
+    },
+    {
+      bg: '',
+      theme: 'green',
+      productImg: 'assets/Catlog_imgs/Dewlight_20ml.png',
+      posterImg: 'assets/hero_banner_4.png',
+      alt: 'Dewlight — Fresh Botanical',
+      subtitle: 'FRESH & BOTANICAL',
+      title: 'Nature\'s Finest,\nBottled for You.',
+      desc: 'A fresh, green, and luminous fragrance inspired by morning dew and blooming earth.',
+      cta: 'SHOP DEWLIGHT',
+      badge: 'Fresh Arrival',
+      notes: ['Bergamot', 'Green', 'Dewy']
     }
   ];
   currentHeroSlide = 0;
@@ -245,8 +265,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.hoveredFamilyIndex = index;
   }
 
+  constructor(private seoService: SeoService) {}
+
   /* ========== LIFECYCLE ========== */
   ngOnInit(): void {
+    // Set SEO meta tags & canonical for homepage
+    this.seoService.setPageSeo({
+      title: 'RedoLotus Ascend | Luxury Artisanal Perfumes & Fragrances India',
+      description: 'RedoLotus Ascend — luxury artisanal perfumes crafted in India. Explore distinctive scents, pure ingredients, and accessible luxury. Rise beyond ordinary.',
+      canonicalPath: ''
+    });
+
+    // Start hero poster auto-slide (every 5 seconds)
+    this.heroInterval = setInterval(() => this.nextHeroSlide(), 5000);
+
     // Scent family slow-motion slideshow (rotates every 4.2 seconds)
     this.scentFamilyInterval = setInterval(() => {
       this.scentFamilies.forEach((f, idx) => {
@@ -274,13 +306,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   /* ========== HERO CAROUSEL CONTROLS ========== */
   goToSlide(index: number): void {
     if (index === this.currentHeroSlide) { return; }
-    this.heroFading = true;
+    // CSS transform transition handles the animation — no JS fade needed
     if (this.heroInterval) { clearInterval(this.heroInterval); }
-    setTimeout(() => {
-      this.currentHeroSlide = index;
-      this.heroFading = false;
-      this.heroInterval = setInterval(() => this.nextHeroSlide(), 5000);
-    }, 350);
+    this.currentHeroSlide = index;
+    this.heroFading = false; // keep for old commented section compatibility
+    this.heroInterval = setInterval(() => this.nextHeroSlide(), 5000);
   }
 
   nextHeroSlide(): void {

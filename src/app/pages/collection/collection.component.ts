@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { SeoService } from '../../services/seo.service';
 
 interface PerfumeSize {
   ml: number | string;
@@ -34,9 +35,19 @@ interface Perfume {
 export class CollectionComponent implements OnInit {
   activeFilter = 'All Scents';
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private seoService: SeoService
+  ) {}
 
   ngOnInit() {
+    // Set SEO meta tags & canonical for collection page
+    this.seoService.setPageSeo({
+      title: 'Our Perfume Collection | RedoLotus Ascend — Shop All Fragrances',
+      description: 'Browse the complete RedoLotus Ascend perfume collection. Discover luxury artisanal fragrances — from woody & oud to floral, fresh, and sweet scents. Shop now.',
+      canonicalPath: 'collection'
+    });
+
     this.route.queryParams.subscribe(params => {
       if (params['filter']) {
         this.activeFilter = params['filter'];
