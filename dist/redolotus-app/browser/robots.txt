@@ -1,0 +1,22 @@
+# ===========================================================
+#  RedoLotus Ascend — robots.txt
+#  Last updated: 2026-10-13
+# ===========================================================
+
+# ---- Default: Allow all bots ----
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_angular/
+
+# ---- Googlebot (no Crawl-delay — Googlebot ignores it) ----
+User-agent: Googlebot
+Allow: /
+
+# ---- Bingbot ----
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 5
+
+# ---- Sitemap ----
+Sitemap: https://redolotusascend.com/sitemap.xml

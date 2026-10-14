@@ -1,0 +1,91 @@
+# =====================================================================
+#  RedoLotus Ascend — Apache .htaccess
+#  For Hostinger shared hosting with Angular SPA + Cloudflare
+#  RULE ORDER: Redirects MUST come before the SPA catch-all [L] rule
+# =====================================================================
+
+# ---- Enable Rewrite Engine ----
+Options -MultiViews
+RewriteEngine On
+RewriteBase /
+
+# ---- 1. Force HTTPS (fires BEFORE SPA catch-all) ----
+# Without this being first, the [L] SPA rule exits before HTTPS redirect fires
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ---- 2. www to non-www 301 redirect (consolidate SEO authority) ----
+# Must also be before SPA catch-all for same reason
+RewriteCond %{HTTP_HOST} ^www\.redolotusascend\.com [NC]
+RewriteRule ^(.*)$ https://redolotusascend.com/$1 [L,R=301]
+
+# ---- 3. Explicitly allow bots and crawlers to access SEO files ----
+# MUST be before the SPA catch-all rule
+<Files "robots.txt">
+  Allow from all
+  Satisfy Any
+</Files>
+
+<Files "sitemap.xml">
+  Allow from all
+  Satisfy Any
+</Files>
+
+# ---- 4. Serve robots.txt and sitemap.xml with correct MIME types ----
+<IfModule mod_mime.c>
+  AddType text/plain         .txt
+  AddType application/xml    .xml
+</IfModule>
+
+# ---- 5. Angular SPA: Redirect all non-file requests to index.html ----
+# This handles Angular routing (pushState)
+# NOTE: Must come AFTER redirect rules above — [L] flag exits rewrite chain
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.html [L,QSA]
+
+# ---- Security Headers ----
+<IfModule mod_headers.c>
+  # Prevent clickjacking
+  Header always set X-Frame-Options "SAMEORIGIN"
+  # XSS Protection
+  Header always set X-XSS-Protection "1; mode=block"
+  # Prevent MIME sniffing
+  Header always set X-Content-Type-Options "nosniff"
+  # Referrer Policy
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ---- Caching for Static Assets ----
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # Images
+  ExpiresByType image/webp              "access plus 1 year"
+  ExpiresByType image/png               "access plus 1 year"
+  ExpiresByType image/jpg               "access plus 1 year"
+  ExpiresByType image/jpeg              "access plus 1 year"
+  ExpiresByType image/svg+xml           "access plus 1 year"
+  ExpiresByType image/x-icon            "access plus 1 year"
+  # Fonts
+  ExpiresByType font/woff2              "access plus 1 year"
+  ExpiresByType font/woff               "access plus 1 year"
+  # CSS & JS (Angular hashed bundles)
+  ExpiresByType text/css                "access plus 1 year"
+  ExpiresByType application/javascript  "access plus 1 year"
+  # HTML — short cache so updates are picked up
+  ExpiresByType text/html               "access plus 1 hour"
+  # SEO Files — no cache so Google always gets fresh version
+  ExpiresByType text/plain              "access plus 0 seconds"
+  ExpiresByType application/xml         "access plus 1 day"
+</IfModule>
+
+# ---- GZIP Compression ----
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
