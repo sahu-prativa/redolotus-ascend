@@ -248,6 +248,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   popupDismissed = false;
   private popupShown = false;
 
+  private popupImages = [
+    'assets/popup_01.png',
+    'assets/popup_02.png',
+    'assets/popup_03.png',
+    'assets/popup_04.png'
+  ];
+  popupImg: string = '';
+
   /* ========== STAR HELPER ========== */
   getStars(rating: number): number[] {
     return Array(Math.round(rating)).fill(0);
@@ -275,6 +283,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       description: 'Discover RedoLotus Ascend — India\'s artisanal EDP perfume brand. Shop small-batch, long-lasting fragrances with exceptional sillage. Woody, floral, fresh & sweet scents. Free shipping above ₹999.',
       canonicalPath: ''
     });
+
+    // Pick a random popup image on every page load
+    const randomIndex = Math.floor(Math.random() * this.popupImages.length);
+    this.popupImg = this.popupImages[randomIndex];
 
     // Start hero poster auto-slide (every 5 seconds)
     this.heroInterval = setInterval(() => this.nextHeroSlide(), 5000);

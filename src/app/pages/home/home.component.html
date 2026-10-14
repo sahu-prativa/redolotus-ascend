@@ -84,6 +84,31 @@
 
 
 <!-- ============================================================
+     1B. FULL-POSTER CINEMATIC HERO SLIDESHOW
+     ============================================================ -->
+<section class="poster-hero"
+         (touchstart)="onHeroTouchStart($event)"
+         (touchend)="onHeroTouchEnd($event)"
+         aria-label="Hero banner slideshow">
+
+  <!-- Slides Track -->
+  <div class="poster-track"
+       [style.transform]="'translateX(-' + currentHeroSlide * 100 + '%)'">
+    <div class="poster-slide" *ngFor="let slide of heroSlides; let i = index">
+      <img [src]="slide.posterImg"
+           [alt]="slide.alt"
+           class="poster-img"
+           draggable="false">
+      <!-- Very subtle dark vignette overlay -->
+      <div class="poster-vignette"></div>
+    </div>
+  </div>
+
+
+</section>
+
+
+<!-- ============================================================
      2. TRUST BAR
      ============================================================ -->
 <div class="trust-bar" role="list" aria-label="Key brand promises">
@@ -486,7 +511,7 @@
     <div class="popup-split">
 
       <!-- Left: image -->
-      <div class="popup-image">
+      <div class="popup-image" [style.background-image]="'url(' + popupImg + ')'">
         <div class="popup-img-badge">EXCLUSIVE</div>
       </div>
 
