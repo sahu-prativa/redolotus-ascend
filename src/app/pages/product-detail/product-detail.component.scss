@@ -1,0 +1,506 @@
+/* ============================================================
+   PRODUCT DETAIL PAGE — RedoLotus Ascend
+   ============================================================ */
+
+$gold: #b8883a;
+$gold-light: #d4a455;
+$bg: #ffffff;
+$bg-card: #f8f5f0;
+$text-primary: #1a0a0e;
+$text-muted: #6b5040;
+$border: rgba(160, 100, 50, 0.15);
+$radius: 14px;
+
+/* ── Not found ── */
+.pd-notfound {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: $text-muted;
+  font-size: 1rem;
+}
+
+/* ── Breadcrumb ── */
+.pd-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 100px 32px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.pd-bc-link {
+  font-size: 0.8rem;
+  color: $text-muted;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+  &:hover { color: $gold; }
+}
+
+.pd-bc-sep { color: rgba(160,128,112,0.4); font-size: 0.8rem; }
+
+.pd-bc-current {
+  font-size: 0.8rem;
+  color: $gold;
+  letter-spacing: 0.05em;
+}
+
+/* ── Page ── */
+.pd-page {
+  background: $bg;
+  min-height: 100vh;
+}
+
+.pd-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+
+  @media (max-width: 600px) { padding: 0 16px; }
+}
+
+/* ── Main grid ── */
+.pd-main {
+  padding: 40px 32px 80px;
+
+  @media (max-width: 600px) { padding: 24px 16px 60px; }
+}
+
+.pd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* ── Image column ── */
+.pd-image-col {
+  position: sticky;
+  top: 80px;
+
+  @media (max-width: 900px) { position: static; }
+}
+
+.pd-image-stage {
+  position: relative;
+  background: radial-gradient(ellipse at 50% 30%, rgba(184,136,58,0.06) 0%, rgba(248,245,240,0) 70%),
+              #f8f5f0;
+  border: 1px solid $border;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 32px;
+  min-height: 420px;
+  overflow: hidden;
+}
+
+.pd-main-img {
+  max-width: 100%;
+  max-height: 380px;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+  transition: transform 0.4s ease;
+
+  &:hover { transform: scale(1.04); }
+}
+
+.pd-image-glow {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 80px;
+  background: radial-gradient(ellipse, rgba(184,136,58,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Badges ── */
+.pd-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 99px;
+  z-index: 2;
+
+  &--sig  { background: linear-gradient(135deg,$gold,$gold-light); color: #0d0508; }
+  &--best { background: rgba(201,169,106,0.15); color: $gold; border: 1px solid rgba(201,169,106,0.4); }
+  &--new  { background: rgba(107,26,43,0.3); color: #e8a0b0; border: 1px solid rgba(180,60,80,0.4); }
+}
+
+/* ── Thumbnails ── */
+.pd-thumb-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  justify-content: center;
+}
+
+.pd-thumb-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  border: 1px solid $border;
+  background: $bg-card;
+  padding: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+
+  &.active { border-color: $gold; transform: translateY(-2px); }
+  &:hover  { border-color: rgba(201,169,106,0.4); }
+}
+
+.pd-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ── Info column ── */
+.pd-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 8px;
+}
+
+.pd-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.pd-category {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $gold;
+}
+
+.pd-meta-dot { color: rgba(160,128,112,0.4); }
+
+.pd-name {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 600;
+  color: $text-primary;
+  line-height: 1.1;
+  margin: 0 0 10px;
+  letter-spacing: 0.01em;
+}
+
+.pd-tagline {
+  font-size: 0.95rem;
+  color: $text-muted;
+  font-style: italic;
+  margin: 0 0 20px;
+}
+
+/* ── Divider ── */
+.pd-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.pd-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,169,106,0.3), transparent);
+}
+.pd-divider-dot { color: $gold; font-size: 0.7rem; }
+
+/* ── Description ── */
+.pd-desc {
+  font-size: 0.95rem;
+  color: $text-muted;
+  line-height: 1.8;
+  margin: 0 0 24px;
+}
+
+/* ── Blocks ── */
+.pd-block { margin-bottom: 20px; }
+
+.pd-block-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $gold;
+  margin: 0 0 10px;
+}
+
+.pd-notes-block { margin-bottom: 20px; }
+
+.pd-notes-text {
+  font-size: 0.9rem;
+  color: $text-muted;
+  line-height: 1.8;
+}
+
+.pd-perfect-for {
+  font-size: 0.9rem;
+  color: $text-muted;
+  margin: 0;
+}
+
+/* ── Size selector ── */
+.pd-size-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pd-size-btn {
+  padding: 8px 18px;
+  border-radius: 99px;
+  border: 1px solid rgba(201,169,106,0.35);
+  background: transparent;
+  color: $text-muted;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover { border-color: $gold; color: $text-primary; }
+
+  &.active {
+    background: linear-gradient(135deg, $gold, $gold-light);
+    border-color: $gold;
+    color: #0d0508;
+    font-weight: 700;
+  }
+}
+
+/* ── Buy row ── */
+.pd-buy-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+  border-top: 1px solid $border;
+  border-bottom: 1px solid $border;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.pd-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: $text-primary;
+  min-width: 90px;
+}
+
+/* ── Qty ── */
+.pd-qty {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid rgba(201,169,106,0.35);
+  border-radius: 99px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.03);
+}
+
+.pd-qty-btn {
+  background: transparent;
+  border: none;
+  color: $text-primary;
+  width: 34px;
+  height: 34px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover { background: rgba(201,169,106,0.1); }
+}
+
+.pd-qty-val {
+  min-width: 30px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+/* ── CTA Button ── */
+.pd-cta-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 99px;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  border: none;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, #2de070, #15a082);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37,211,102,0.3);
+  }
+}
+
+/* ── Trust pills ── */
+.pd-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.pd-trust-pill {
+  font-size: 0.75rem;
+  color: $text-muted;
+  background: $bg-card;
+  border: 1px solid $border;
+  border-radius: 99px;
+  padding: 5px 14px;
+}
+
+/* ── Back button ── */
+.pd-back-btn {
+  background: transparent;
+  border: none;
+  color: $text-muted;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+  text-align: left;
+
+  &:hover { color: $gold; }
+}
+
+.pd-back-link {
+  color: $gold;
+  text-decoration: none;
+  font-size: 0.9rem;
+  &:hover { text-decoration: underline; }
+}
+
+/* ── Related Products ── */
+.pd-related {
+  background: #f8f5f0;
+  border-top: 1px solid $border;
+  padding: 64px 32px;
+  text-align: center;
+
+  @media (max-width: 600px) { padding: 48px 16px; }
+}
+
+.pd-related-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: $gold;
+  margin: 0 0 12px;
+}
+
+.pd-related-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
+  color: $text-primary;
+  margin: 0 0 40px;
+}
+
+.pd-related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+
+  @media (max-width: 768px) { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+}
+
+.pd-related-card {
+  display: flex;
+  flex-direction: column;
+  background: $bg-card;
+  border: 1px solid $border;
+  border-radius: $radius;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: rgba(201,169,106,0.35);
+  }
+}
+
+.pd-rel-img-wrap {
+  background: radial-gradient(ellipse at 50% 30%, rgba(201,169,106,0.06) 0%, transparent 70%);
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+}
+
+.pd-rel-img {
+  max-width: 100%;
+  max-height: 140px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.5));
+  transition: transform 0.3s ease;
+
+  .pd-related-card:hover & { transform: scale(1.06); }
+}
+
+.pd-rel-info {
+  padding: 16px 20px;
+  text-align: left;
+}
+
+.pd-rel-family {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $gold;
+}
+
+.pd-rel-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: $text-primary;
+  margin: 4px 0 6px;
+}
+
+.pd-rel-price {
+  font-size: 0.85rem;
+  color: $text-muted;
+  margin: 0;
+}

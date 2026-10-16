@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SeoService } from '../../services/seo.service';
 
 interface PerfumeSize {
@@ -11,6 +11,7 @@ interface PerfumeSize {
 
 interface Perfume {
   id: number;
+  slug: string;
   name: string;
   tagline: string;
   category: string;
@@ -39,6 +40,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private seoService: SeoService
   ) {}
 
@@ -277,6 +279,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
   perfumes: Perfume[] = [
     {
       id: 1,
+      slug: 'ember-shroud',
       name: 'Ember Shroud',
       tagline: 'Shrouded Smoke, Timeless Veil.',
       category: 'Signature Collection',
@@ -296,6 +299,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
     },
     {
       id: 2,
+      slug: 'moksha-noir',
       name: 'Moksha Noir',
       tagline: 'Lavender Flames of Freedom.',
       category: 'Signature Collection',
@@ -315,6 +319,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
     },
     {
       id: 3,
+      slug: 'marsh-glow',
       name: 'Marsh Glow',
       tagline: 'Gooey Glow Over Smoky Depths.',
       category: 'Signature Collection',
@@ -334,6 +339,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
     },
     {
       id: 4,
+      slug: 'maya-wave',
       name: 'Maya Wave',
       tagline: 'Our Secret Formula • Let the mystery unfold.',
       category: 'Signature Collection',
@@ -353,6 +359,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
     },
     {
       id: 5,
+      slug: 'maya-ascend',
       name: 'Maya Ascend',
       tagline: 'Our Secret Formula • A mysterious blend.',
       category: 'Discovery Collection',
@@ -371,6 +378,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
     },
     {
       id: 6,
+      slug: 'velvet-noir',
       name: 'Velvet Noir',
       tagline: 'Intimate • Mature • Elegant',
       category: 'Discovery Collection',
@@ -389,6 +397,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
     },
     {
       id: 7,
+      slug: 'midnight-soul',
       name: 'Midnight Soul',
       tagline: 'Mysterious • Warm • Regal',
       category: 'Discovery Collection',
@@ -407,6 +416,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
     },
     {
       id: 8,
+      slug: 'dewlight',
       name: 'Dewlight',
       tagline: 'Fresh • Aquatic • Clean',
       category: 'Discovery Collection',
@@ -425,6 +435,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
     },
     {
       id: 9,
+      slug: 'sunlit-soul',
       name: 'Sunlit Soul',
       tagline: 'Fresh • Fruity • Aquatic',
       category: 'Discovery Collection',
@@ -443,6 +454,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
     },
     {
       id: 10,
+      slug: 'discovery-set',
       name: 'The Discovery Set',
       tagline: 'Experience all 5 signature scents from Batch 2.',
       category: 'Gift Sets',
@@ -457,6 +469,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
     },
     {
       id: 11,
+      slug: 'travel-minis-combo',
       name: 'Travel Minis Combo',
       tagline: 'Mix and match your favorite 8ml travel perfumes.',
       category: 'Gift Sets',
@@ -488,22 +501,10 @@ export class CollectionComponent implements OnInit, OnDestroy {
     { name: 'Sunlit Soul', notes: 'Fresh • Aquatic' }
   ];
 
-  // Quick View Modal State
-  showQuickView = false;
-  selectedPerfumeForView: Perfume | null = null;
-
+  // Navigate to product detail page
   openQuickView(perfume: Perfume) {
-    if (perfume.id === 10 || perfume.id === 11) return; // Skip combos for now, or handle differently
-    this.selectedPerfumeForView = perfume;
-    if (perfume.sizes[perfume.selectedSizeIndex]?.image) {
-      perfume.image = perfume.sizes[perfume.selectedSizeIndex].image!;
-    }
-    this.showQuickView = true;
-  }
-
-  closeQuickView() {
-    this.showQuickView = false;
-    this.selectedPerfumeForView = null;
+    if (perfume.id === 10 || perfume.id === 11) return; // Gift sets handled separately
+    this.router.navigate(['/product', perfume.slug]);
   }
 
   get filteredPerfumes() {

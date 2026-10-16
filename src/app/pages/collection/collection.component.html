@@ -65,17 +65,17 @@
             <span class="lux-badge lux-badge-wine" *ngIf="!perfume.tags.includes('Our Signature') && !perfume.tags.includes('Best Sellers') && perfume.tags.includes('New Launch')">New Launch</span>
             <span class="lux-badge lux-badge-set" *ngIf="perfume.category === 'Gift Sets'">Discovery Set</span>
 
-            <!-- Quick View Trigger (Hover) -->
+            <!-- View Details Trigger (Hover) -->
             <button type="button" 
                     class="lux-quick-view-btn" 
                     *ngIf="perfume.id !== 10 && perfume.id !== 11" 
                     (click)="$event.stopPropagation(); openQuickView(perfume)" 
-                    aria-label="Quick View">
+                    aria-label="View Details">
               <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
                 <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
               </svg>
-              <span>Quick View</span>
+              <span>View Details</span>
             </button>
 
             <!-- Bottle Image -->
@@ -197,70 +197,5 @@
       Confirm & Order via WhatsApp
     </button>
 
-  </div>
-</div>
-
-<!-- Quick View Modal -->
-<div class="modal-backdrop" *ngIf="showQuickView" (click)="closeQuickView()"></div>
-<div class="quick-view-modal" *ngIf="showQuickView && selectedPerfumeForView">
-  <button class="close-btn" (click)="closeQuickView()">✕</button>
-  <div class="row w-100 m-0">
-    <!-- Image Section -->
-    <div class="col-md-5 p-4 p-md-5 d-flex align-items-center justify-content-center bg-cream">
-      <img [src]="selectedPerfumeForView.image" [alt]="selectedPerfumeForView.name" style="max-width: 100%; max-height: 350px; object-fit: contain; filter: drop-shadow(0 15px 20px rgba(0,0,0,0.4));">
-    </div>
-    <!-- Details Section -->
-    <div class="col-md-7 p-4 p-md-5 d-flex flex-column justify-content-center" style="background-color: #fff;">
-      
-      <h2 style="font-family: var(--font-serif); color: var(--wine-dark); font-size: 2.2rem; font-weight: 600; margin-bottom: 5px;">{{ selectedPerfumeForView.name }}</h2>
-      
-      <p style="font-size: 1rem; color: #777; font-style: italic; margin-bottom: 20px;">{{ selectedPerfumeForView.tagline }}</p>
-      
-      <blockquote style="font-size: 0.95rem; color: #444; border-left: 3px solid var(--gold-accent); padding-left: 15px; margin-bottom: 25px; font-style: italic;">
-        {{ selectedPerfumeForView.description || 'A luxurious and premium blend designed to leave a lasting impression.' }}
-      </blockquote>
-      
-      <h6 style="color: var(--wine-primary); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">
-        {{ selectedPerfumeForView.tags.includes('Our Signature') ? 'Fragrance Character' : 'Notes' }}
-      </h6>
-      <div style="font-size: 0.95rem; color: #333; margin-bottom: 25px; line-height: 1.6;" [innerHTML]="selectedPerfumeForView.notesHtml || 'Detailed notes will be revealed soon.'"></div>
-
-      <h6 style="color: var(--wine-primary); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Perfect For</h6>
-      <p style="font-size: 0.95rem; color: #444; margin-bottom: 25px;">{{ selectedPerfumeForView.perfectFor || 'Unisex • Everyday wear • Luxury seekers' }}</p>
-      
-      <h6 style="color: var(--wine-primary); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Available Sizes</h6>
-      <div class="d-flex flex-wrap gap-2 mb-4">
-        <button *ngFor="let size of selectedPerfumeForView.sizes; let i = index" 
-                class="btn btn-sm btn-size-hover" 
-                [ngStyle]="{
-                  'border': '1px solid var(--gold-accent)', 
-                  'border-radius': '20px',
-                  'font-size': '0.85rem',
-                  'padding': '6px 15px',
-                  'background-color': selectedPerfumeForView.selectedSizeIndex === i ? 'var(--gold-accent)' : 'transparent',
-                  'color': selectedPerfumeForView.selectedSizeIndex === i ? 'var(--wine-dark)' : 'var(--wine-dark)'
-                }"
-                (click)="selectSize(selectedPerfumeForView, i)">
-          {{ size.ml }}{{ (size.ml.toString().includes('ml') || size.ml.toString().includes('Vials')) ? '' : 'ml' }}
-        </button>
-      </div>
-
-      <!-- Size & Order -->
-      <div class="d-flex align-items-center mt-auto pt-4" style="border-top: 1px solid #eee; gap: 20px;">
-        <div style="font-size: 1.6rem; font-weight: 600; color: var(--wine-dark);">
-          ₹{{ selectedPerfumeForView.sizes[selectedPerfumeForView.selectedSizeIndex].price * selectedPerfumeForView.quantity }}
-        </div>
-        
-        <div class="quantity-selector d-flex align-items-center justify-content-between" style="border: 1px solid rgba(201, 169, 106, 0.5); border-radius: 20px; padding: 2px 5px; width: 100px; background: rgba(255, 255, 255, 0.4);">
-          <button (click)="decreaseQuantity(selectedPerfumeForView)" style="background: transparent; border: none; color: var(--wine-dark); cursor: pointer; font-size: 1.1rem; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; transition: 0.2s;">−</button>
-          <span style="font-weight: 600; color: var(--wine-dark); font-size: 0.9rem;">{{ selectedPerfumeForView.quantity }}</span>
-          <button (click)="increaseQuantity(selectedPerfumeForView)" style="background: transparent; border: none; color: var(--wine-dark); cursor: pointer; font-size: 1.1rem; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; transition: 0.2s;">+</button>
-        </div>
-
-        <button class="btn btn-gold-solid flex-grow-1" style="border-radius: 30px; font-size: 14px; padding: 12px;" (click)="handleAddToCart(selectedPerfumeForView); closeQuickView()">
-          [ Buy Now ]
-        </button>
-      </div>
-    </div>
   </div>
 </div>

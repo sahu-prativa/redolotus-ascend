@@ -65,6 +65,19 @@ export class HomeComponent implements OnInit, OnDestroy {
       cta: 'SHOP DEWLIGHT',
       badge: 'Fresh Arrival',
       notes: ['Bergamot', 'Green', 'Dewy']
+    },
+    {
+      bg: '',
+      theme: 'dark',
+      productImg: 'assets/Catlog_imgs/Moksha_Noir_20ml.png',
+      posterImg: 'assets/hero_banner_5.png',
+      alt: 'Moksha Noir — Dark Luxury Fragrance',
+      subtitle: 'DARK LUXURY',
+      title: 'Embrace the Dark,\nOwn the Night.',
+      desc: 'A bold, opulent composition of dark woods, oud, and smoky resins for those who command attention.',
+      cta: 'SHOP MOKSHA NOIR',
+      badge: 'Dark Edition',
+      notes: ['Oud', 'Dark Woods', 'Resin']
     }
   ];
   currentHeroSlide = 0;
@@ -273,7 +286,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.hoveredFamilyIndex = index;
   }
 
-  constructor(private seoService: SeoService) {}
+  constructor(private seoService: SeoService) { }
 
   /* ========== LIFECYCLE ========== */
   ngOnInit(): void {
@@ -396,9 +409,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   /* ========== QUICK ADD VIA WHATSAPP ========== */
   handleQuickAdd(product: any): void {
     const phoneNumber = '916302004167';
-    
+
     const message = `Hello Redolotus Ascend! 🌸\n\nI would like to order:\n*Product:* ${product.name}\n*Quantity:* 1\n*Total Price:* ₹${product.price}\n\n*(Shipping charges extra)*`;
-    
+
     window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`, '_blank');
   }
 }
